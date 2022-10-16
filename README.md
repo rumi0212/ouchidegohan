@@ -29,7 +29,7 @@
 https://docs.google.com/spreadsheets/d/1FiNzGKTMO9PdrN9vDU09MmbRpycb64HqNEzV_o9LPeM/edit?usp=sharing
 
 ## 設計書
-<...>
+https://docs.google.com/spreadsheets/d/1Wz_nGtSaJyqLhIjRGKNQY2_vaX6dOqBOGU51tAsZiBU/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)

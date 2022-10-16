@@ -1,0 +1,2 @@
+class ArrangeRecipe < ApplicationRecord
+end
