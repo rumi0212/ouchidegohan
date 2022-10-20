@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="mt-5">
+    <h4 class="mb-5 text-color col-3 text-center">アレンジレシピ投稿</h4>
+  </div>
+
+      <%= form_with model: @arrange_recipe, url: arrange_recipe_path, local: true do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+
+        <div class="form-group row">
+          <%= f.label "レシピのタイトル", class:"col-md-2" %>
+          <%= f.text_field :arrange_recipe, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐" %>
+
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :料理写真, class:"col-md-2" %>
+          <%= f.file_field :image, accept: "image/*" %>
+          <p>※料理以外の写真はご遠慮ください。</p>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :材料, class:"col-3" %>
+          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"何人分" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :食材・調味料, class:"col-6" %>
+          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"牛肉" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :分量, class:"col-6" %>
+          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"200g" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :作り方, class:"col-3" %>
+          <%= f.label "①", class: "col-md-1 text-right" %><%= f.text_field :cooking_method, class:"rounded", autofocus: true %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :コメント, class:"col-3" %>
+          <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "保存", class:"btn btn-success offset-3 mt-4" %>
+        </div>
+
+      <% end %>
+
+</div>

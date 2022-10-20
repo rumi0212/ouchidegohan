@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    resources :recipes, except: [:destroy]
+    
+  end
 
   # 顧客用
   devise_for :customers,skip: [:passwords],controllers: {
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-
+    resources :arrange_recipes, except: [:destroy]
     
     end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
