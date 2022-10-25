@@ -1,0 +1,2 @@
+class ArrangeProcedure < ApplicationRecord
+end

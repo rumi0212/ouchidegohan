@@ -1,0 +1,2 @@
+class ArrangeIngredient < ApplicationRecord
+end

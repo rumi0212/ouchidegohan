@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_16_084619) do
+ActiveRecord::Schema.define(version: 2022_10_25_151451) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,12 +52,25 @@ ActiveRecord::Schema.define(version: 2022_10_16_084619) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "arrange_ingredients", force: :cascade do |t|
+    t.integer "arrange_recipe_id", null: false
+    t.string "name"
+    t.string "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "arrange_procedures", force: :cascade do |t|
+    t.integer "arrange_recipe_id"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "arrange_recipes", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "title", null: false
-    t.string "ingredient", null: false
-    t.string "amount", null: false
-    t.text "cooking_method", null: false
+    t.string "serving", null: false
     t.text "comment", null: false
     t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
@@ -86,16 +99,31 @@ ActiveRecord::Schema.define(version: 2022_10_16_084619) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "recipes_id", null: false
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.string "name", null: false
+    t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "recipes_id", null: false
+    t.integer "recipe_id", null: false
     t.integer "customer_id", null: false
     t.string "title", null: false
     t.text "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "procedures", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -104,9 +132,7 @@ ActiveRecord::Schema.define(version: 2022_10_16_084619) do
     t.integer "store_id", null: false
     t.integer "category_id", null: false
     t.string "title", null: false
-    t.string "ingredient", null: false
-    t.string "amount", null: false
-    t.text "cooking_method", null: false
+    t.string "serving", null: false
     t.text "comment", null: false
     t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
