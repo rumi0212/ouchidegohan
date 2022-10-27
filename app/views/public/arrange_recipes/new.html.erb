@@ -4,11 +4,10 @@
   </div>
 
       <%= form_with model: @arrange_recipe, url: arrange_recipe_path, local: true do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
 
         <div class="form-group row">
           <%= f.label "レシピのタイトル", class:"col-md-2" %>
-          <%= f.text_field :arrange_recipe, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐" %>
+          <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐" %>
 
         </div>
 
@@ -20,23 +19,45 @@
 
         <div class="form-group row">
           <%= f.label :材料, class:"col-3" %>
-          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"何人分" %>
+          <%= f.text_field :serving, class:"rounded", autofocus: true, placeholder:"何人分" %>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :食材・調味料, class:"col-6" %>
-          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"牛肉" %>
+        <div class="row">
+          <table class="table table-borderless mb-0" id="arrange_ingredient-table">
+            <thead>
+              <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
+              <th class="pb-1"><h6 class="mb-0">分量</h6></th>
+            </thead>
+            <tbody>
+              <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
+                <tr>
+                  <td class="py-1"><%= arrange_ingredient.text_field :name, size:"14", placeholder: "牛肉" %></td>
+                  <td class="py-1"><%= arrange_ingredient.text_field :amount, size:"14", placeholder: "200g" %></td>
+                  <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <input type="button" value="材料を追加" onclick="addRow('arrange_ingredient-table')" class="btn btn-sm btn-color py-0 my-3 ml-2">
         </div>
 
-        <div class="form-group row">
-          <%= f.label :分量, class:"col-6" %>
-          <%= f.text_field :amount, class:"rounded", autofocus: true, placeholder:"200g" %>
+        <div class="row">
+          <h4 class="text-center mx-auto mb-0">作り方</h4>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :作り方, class:"col-3" %>
-          <%= f.label "①", class: "col-md-1 text-right" %><%= f.text_field :cooking_method, class:"rounded", autofocus: true %>
+        <div class="row">
+          <div class='offset-md-3'>
+          <table class="table table-borderless" id="arrange_procedure-table">
+            <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
+            <tr>
+              <td><%= arrange_procedure.text_area :body, placeholder:"作り方を記入" class:"rounded", autofocus: true %></td>
+              <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+            </tr>
+            <% end %>
+          </table>
+          </div>
         </div>
+        <input type="button" value="作り方を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3 procedure-add-btn">
 
         <div class="form-group row">
           <%= f.label :コメント, class:"col-3" %>
