@@ -1,0 +1,63 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-7'>
+
+    </div>
+    <div class='col-md-11 offset-md-1'>
+      <div class="recipe_new">
+        <div class="recipe_photo">
+          <%= image_tag @recipe.image, format: 'jpeg', fallback: "no_image.jpeg",size:"300x200" %>
+        </div>
+        <div class="item_text">
+          <h2><%= @recipe.title %></h2>
+        </div>
+        
+        <div class='row'>
+          <table class="table table-borderless mx-auto">
+            <thead class="border-bottom">
+              <th class="d-flex pb-0 mb-2">
+                <h5>材料</h5>
+                <p>（<%= @recipe.serving %>人前）</p>
+              </th>
+            </thead>
+            <tbody>
+              <% @recipe.ingredients.each do |ingredient| %>
+              <tr>
+                <td><%= ingredient.name %></td>
+                <td><%= ingredient.amount %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="row mx-auto mt-5">
+          <table class="table table-borderless mx-auto">
+            <thead class="page-heading-pink">
+              <th colspan="2" class="py-1">
+                <h5>作り方</h5>
+              </th>
+            </thead>
+            <tbody>
+              <% step_num = 0 %>
+              <% @recipe.procedures.each do |procedure| %>
+              <tr class="ml-2">
+                <td><%= step_num += 1 %>)</td>
+                <td><%= @procedure.body %></td>
+              </tr>
+              <% end %>
+            </tbody>
+         </table>
+        </div>
+
+        <div class="row mt-5">
+          <div class="mx-auto">
+            <h5>コメント</h5>
+            <p><%= @recipe.comment %></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

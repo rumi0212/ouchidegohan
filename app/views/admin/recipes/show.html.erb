@@ -15,36 +15,53 @@
               <td><%= @recipe.category.name %></td>
             </tr>
             <tr>
-              <th>材料</th>
-            </tr>
-            <tr>
-              <th>商品説明</th>
-              <td><%= @item.introduction %></td>
-            </tr>
-            <tr>
-              <th>ジャンル</th>
-              <td><%= @item.genre.name %></td>
-            </tr>
-            <tr>
               <th>
-                  税込価格<br>
-                  (税抜き価格)
+                <h4>材料</h4>
+                <p>（<%= @recipe.serving %>人前）</p>
               </th>
-              <td><%= (@item.price*1.1).to_i %> (<%= @item.price %>) 円</td>
             </tr>
+            
+            <tbody>
+              <% @recipe.ingredients.each do |ingredient| %>
+              <tr>
+                <td style="width: 45%" class='pt-4 pl-4'><%= ingredient.name %></td>
+                <td style="width: 10%" class='pt-4'><%= ingredient.amount %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+
+        <div class="row mx-auto mt-5">
+          <table style="width: 65%" class="table table-borderless mx-auto">
+            <thead class="page-heading-pink">
+              <th colspan="2" class="py-1">
+                <h5 class="jp-font-classic text-white text-center mb-0">作り方</h5>
+              </th>
+            </thead>
+            <tbody>
+              <% step_num = 0 %>
+              <% @recipe.procedures.each do |procedure| %>
+              <tr class="ml-2">
+                <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
+                <td style='width: 50%' class="text-wrap pt-3"><%= procedure.body %></td>
+              </tr>
+              <% end %>
+            </tbody>
+            
             <tr>
-              <th>販売ステータス</th>
+              <th>公開ステータス</th>
                 <td>
-                     <% if @item.is_active == true %>
-                        <p class="text-success ">販売中</p>
+                     <% if @recipe.is_active == true %>
+                        <p class="text-success ">公開</p>
                      <% else %>
-                        <p class="text-secondary ">販売停止中</p>
+                        <p class="text-secondary ">非公開</p>
                      <% end %>
                 </td>
             </tr>
-          </table>
+          </table>cipe
           <div class="d-flex justify-content-around">
-            <p><%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %></p>
+            <p><%= link_to '編集する', edit_admin_recipe_path(@recipe.id), class: 'btn btn-success' %></p>
           </div>
    　　 </div>
   　</div>

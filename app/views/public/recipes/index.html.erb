@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 px-sm-0">
+      <h1>レシピ一覧</h1><h4>(全<%= @recipes.count %>件)</h4>
+    </div>
+  </div>
+  <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
+      <% @recipes.each do |recipe| %>
+      <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
+       <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+        <%= link_to recipe_path(recipe.id) do %>
+          <p class="img-wrap"><%= image_tag recipe.image, format: 'jpeg', fallback: "no_image.jpeg", size: "180x130" %></p>
+        <% end %>
+        <div class="card-body">
+          <p class="recipe-details recipe-name card-text"><%= recipe.name %></p>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  </div>
+      <%= paginate(@recipes) %>
+</div>
