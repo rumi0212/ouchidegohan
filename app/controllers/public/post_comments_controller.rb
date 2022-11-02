@@ -7,6 +7,11 @@ class Public::PostCommentsController < ApplicationController
     @comment.save
     redirect_to recipe_path(recipe)
   end
+  
+  def destroy
+    PostComment.find(params[:id]).destroy
+    redirect_to recipe_path(params[:recipe_id])
+  end
 
   private
 

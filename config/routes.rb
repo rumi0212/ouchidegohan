@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :arrange_recipes, except: [:destroy]
     
   resources :recipes do
-    resources :post_comments, only: [:create]
+    resources :post_comments, only: [:create, :destroy]
   
   end  
     
