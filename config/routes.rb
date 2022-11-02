@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     	get 'quit'
     	patch 'out'
     	end
+    end
     
     resources :recipes do
       resources :post_comments, only: [:create, :destroy]
