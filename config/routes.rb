@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   end
 
   # 顧客用
+  
+  scope module: :public do
+    resource :customers,only: [:edit,:update]
+  end
+  
   devise_for :customers,skip: [:passwords],controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -23,8 +28,14 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
     resources :arrange_recipes, except: [:destroy]
     
-  resources :recipes do
-    resources :post_comments, only: [:create, :destroy]
+    resource :customers,only: [:show] do
+      collection do
+    	get 'quit'
+    	patch 'out'
+    	end
+    
+    resources :recipes do
+      resources :post_comments, only: [:create, :destroy]
   
   end  
     
