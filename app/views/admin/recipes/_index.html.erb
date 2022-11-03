@@ -1,0 +1,37 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>投稿日時</th>
+      <th>店舗名</th>
+      <th>レシピ名</th>
+      <th>カテゴリ</th>
+      <th>公開ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% recipes.each do |recipe| %>
+      <tr>
+        <td class="info col-xs-1">
+          <%= link_to "#{recipe.created_at.strftime('%Y/%m/%d %H:%M:%S')}", admin_recipe_path(recipe.id), class: "text-dark border-bottom border-dark" %>
+        </td>
+        <td class="text-left">
+          <%= recipe.store.name %>
+        </td>
+        <td class="text-left">
+          <%= recipe.title %>
+        </td>
+        <td class="text-left">
+          <%= recipe.category.name %>
+        </td>
+        <td class="col-xs-2">
+          <% if recipe.status == true %>
+          <p class="text-secondary">公開</p>
+          <% else %>
+          <p class="text-success">非公開</p>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
