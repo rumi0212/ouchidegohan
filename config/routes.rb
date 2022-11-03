@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :recipes, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :stores, only: [:index, :show, :edit, :update]
     
   end
 
