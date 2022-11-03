@@ -18,13 +18,13 @@
       </div>
 
       <div class="field my-2">
-        <%= f.label "パスワード（6文字以上）" %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class:"rounded", autofocus: true, placeholder:"●●●●●●" %>
+        <%= f.label "パスワード" %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"rounded", autofocus: true, placeholder:"6文字以上" %>
       </div>
 
       <div class="field my-2">
         <%= f.label "パスワード（確認用）" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"rounded", autofocus: true, placeholder:"●●●●●●" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"rounded", autofocus: true %>
       </div>
       
 
