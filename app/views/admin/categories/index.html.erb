@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12 mt-5">
+            <h2>カテゴリ一覧・追加</h2>
+        </div>
+    </div>
+    <div class="row my-5 d-flex justify-content-center">
+        <div class="col-xs-12">
+            <%= form_with model: @category,url: admin_categories_path,method: :post, remote: true do |f| %>
+             <%= f.label :name, "カテゴリ名" %>
+             <%= f.text_field :name, id: "form" %>
+             <%= f.submit "新規登録", class:"btn btn-success ml-4 py-1" %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="row my-5 justify-content-center">
+      <div class="col-lg-5 mt-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>カテゴリ</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td></td>
+              <td align="right"><%= link_to "　編集する　", edit_admin_category_path(category), class: "btn btn-success" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
