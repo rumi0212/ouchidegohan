@@ -55,6 +55,22 @@
           <p class="mx-auto text-wrap text-center px-3"><%= @recipe.comment %></p>
         </div>
 
+        <div>
+          <% if @recipe.favorited_by?(current_customer) %>
+            <p>
+              <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
+              ♥<%= @recipe.favorites.count %>
+              <% end %>
+            </p>
+          <% else %>
+            <p>
+              <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+              ♡<%= @recipe.favorites.count %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+
         <div class="row mt-5">
           <div class="mx-auto">
             <h5>コメント件数：<%= @recipe.post_comments.count %></h5>
