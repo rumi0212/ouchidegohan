@@ -1,0 +1,58 @@
+<div class="container">
+  <h2 class="text-center my-5">店舗編集</h2>
+  <div class="row">
+    <div class="col-8 offset-2 mb-5">
+      <%= form_with model: @store, url: admin_stores_path, local: true do |f| %>
+      <table>
+        <tr>
+          <div class="form-group">
+            <%= f.label :店舗画像, class:"form_label"%>
+            <%= f.file_field :image, accept: "image/*",class:"mb-3 ml-3"%>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <%= f.label :店名, class:"form_label" %>
+            <%= f.text_field :store_name, placeholder:"店名", autofocus: true, class:"form-control mb-3" %>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <%= f.label :紹介文, class:"form_label" %>
+            <%= f.text_area :introduction, size: "50x5",  autofocus: true, class:"form-control form-control-lg mb-3" %>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <%= f.label :カテゴリ, class:"form_label" %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--", class:"form-select" %>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :住所, class:"form_label" %></th>
+            <td><%= f.text_field :address, autofocus: true, class: 'rounded col-6 mb-3' %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :電話番号, class:"form_label" %></th>
+            <td><%= f.telephone_field :telephone_number, class:"rounded", autofocus: true %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :営業時間, class:"form_label" %></th>
+            <td><%= f.text_field :opening_hour, placeholder:"00:00〜00:00" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-action d-flex justify-content-around">
+            <%= f.submit "変更を保存", class:"btn btn-success" %>
+          </div>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>店舗ID</th>
+      <th>店名</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% stores.each do |store| %>
+      <tr>
+        <td class="info col-xs-1">
+          <%= store.id %>
+        </td>
+        <td class="text-left">
+          <%= link_to store.store_name,admin_store_path(store) %>
+        </td>
+        <td class="text-left">
+          <%= store.address %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

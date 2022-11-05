@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h2>店舗新規登録</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+      <%= form_with model: @store, url: admin_stores_path, local: true do |f| %>
+      <table>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :店舗画像 %></th>
+            <th><%= f.file_field :image, accept: "image/*" %></th>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :店名 %></th>
+            <td><%= f.text_field :store_name, placeholder:"店名" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :紹介文 %></th>
+            <td><%= f.text_area :introduction, size: "50x5", placeholder:"ここに説明文を記述します" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :カテゴリ %></th>
+            <td><%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :住所 %></th>
+            <td><%= f.text_field :address, autofocus: true, class: 'rounded col-6', placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :電話番号 %></th>
+            <td><%= f.telephone_field :telephone_number, class:"rounded", autofocus: true, placeholder:"00000000000" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :営業時間 %></th>
+            <td><%= f.text_field :opening_hour, placeholder:"00:00〜00:00" %></td>
+          </div>
+        </tr>
+        
+        <tr>
+          <div class="form-action">
+            <th><%= f.submit "新規登録", class:"btn btn-success" %></th>
+          </div>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
