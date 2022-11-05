@@ -1,0 +1,5 @@
+<% if current_customer.bookmark?(recipe) %>
+  <%= render 'bookmarks/unbookmark', recipe: recipe %>
+<% else %>
+  <%= render 'bookmarks/bookmark', recipe: recipe %>
+<% end %>
