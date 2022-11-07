@@ -1,13 +1,13 @@
 <div class="container">
   <div class="mt-5">
-    <h4 class="mb-5 text-color col-3 text-center">レシピ投稿</h4>
+    <h2 class="mx-auto mb-5 text-color col-3 text-center">レシピ投稿</h2>
   </div>
 
-      <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
+      <%= form_with model: @recipe, local: true do |f| %>
 
         <div class="form-group row">
-          <%= f.label "レシピのタイトル", class:"col-md-2" %>
-          <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐" %>
+          <%= f.label "レシピのタイトル", class:"col-md-2 " %>
+          <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐", size: "45", class:'py-2 px-2' %>
 
         </div>
 
@@ -17,13 +17,15 @@
           <p>※料理以外の写真はご遠慮ください。</p>
         </div>
 
-        <div class="form-group">
-          <%= f.label :カテゴリ %>
+        <div class="form-group row">
+          <%= f.label :カテゴリ, class:"col-md-2" %>
           <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "--選択してください--" %>
         </div>
 
+
+      <!------------ 材料登録 -------------->
         <div class="form-group row">
-          <%= f.label :材料, class:"col-3" %>
+          <%= f.label :材料, class:"col-md-2" %>
           <%= f.text_field :serving, class:"rounded", autofocus: true, placeholder:"何人分" %>
         </div>
 
@@ -36,16 +38,27 @@
             <tbody>
               <%= f.fields_for :ingredients do |ingredient| %>
                 <tr>
-                  <td class="py-1"><%= ingredient.text_field :name, size:"14", placeholder: "牛肉" %></td>
-                  <td class="py-1"><%= ingredient.text_field :amount, size:"14", placeholder: "200g" %></td>
-                  <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+                  <td><%= render "recipes/ingredient_fields", f: t %></td>
                 </tr>
               <% end %>
+              
+            <div id="detail-association-insertion-point"></div>  
+              
             </tbody>
           </table>
-          <input type="button" value="材料を追加" onclick="addRow('ingredient-table')" class="btn btn-sm btn-color py-0 my-3 ml-2">
+          
+          <div class="col-10 mx-auto mt-2">
+            <%= link_to_add_association "+フォームを追加", f, :ingredients, 
+            class: "btn btn-secondary btn-block",
+            data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'
+            }%>
+          </div>
+          
         </div>
-
+        
+      <!------------ 作成手順 -------------->
         <div class="row">
           <h4 class="text-center mx-auto mb-0">作り方</h4>
         </div>
@@ -55,17 +68,17 @@
           <table class="table table-borderless" id="procedure-table">
             <%= f.fields_for :procedures do |procedure| %>
             <tr>
-              <td><%= procedure.text_area :body, placeholder:"作り方を記入" class:"rounded", autofocus: true %></td>
+              <td><%= procedure.text_area :body, placeholder:"作り方を記入", class:"rounded", autofocus: true %></td>
               <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
             </tr>
             <% end %>
           </table>
           </div>
         </div>
-        <input type="button" value="作り方を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3 procedure-add-btn">
+        <input type="button" value="作り方を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-outline-warning">
 
         <div class="form-group row">
-          <%= f.label :コメント, class:"col-3" %>
+          <%= f.label :コツ・ポイント, class:"col-md-2" %>
           <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します" %>
         </div>
 

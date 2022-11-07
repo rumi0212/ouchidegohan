@@ -4,6 +4,8 @@ class Admin::RecipesController < ApplicationController
   
   def new
     @recipe = Recipe.new
+    @ingredients = @recipe.ingredients.build
+    @procedures = @recipe.procedures.build
   end
   
   def index
@@ -39,7 +41,7 @@ class Admin::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:image, :title, :serving, :store_id, :genre_id, :comment,:status)
+    params.require(:recipe).permit(:image, :title, :serving, :store_id, :genre_id, :comment,:status, procedures_attributes: [:body, :_destroy],ingredients_attributes: [:name, :amount, :_destroy])
   end
   
 end
