@@ -38,26 +38,26 @@
             <tbody>
               <%= f.fields_for :ingredients do |ingredient| %>
                 <tr>
-                  <td><%= render "admin/recipes/ingredient_fields", f: t %></td>
+                  <td><%= render partial: "admin/recipes/ingredient_fields", locals: { f: ingredient }%></td>
                 </tr>
               <% end %>
-              
-            <div id="detail-association-insertion-point"></div>  
-              
+
+            <div id="detail-association-insertion-point"></div>
+
             </tbody>
           </table>
-          
-          <div class="col-10 mx-auto mt-2">
-            <%= link_to_add_association "+フォームを追加", f, :ingredients, 
+
+          <div class="links col-10 mx-auto mt-2">
+            <%= link_to_add_association "+フォームを追加", f, :ingredients,
             class: "btn btn-secondary btn-block",
             data: {
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'after'
             }%>
           </div>
-          
+
         </div>
-        
+
       <!------------ 作成手順 -------------->
         <div class="row">
           <h4 class="text-center mx-auto mb-0">作り方</h4>
