@@ -50,16 +50,22 @@
             </tbody>
             
             <tr>
+              <th>コツ・ポイント</th>
+              <td><%= @recipe.comment %></td>
+            </tr>
+            
+            
+            <tr>
               <th>公開ステータス</th>
                 <td>
-                     <% if @recipe.is_active == true %>
+                     <% if @recipe.status == true %>
                         <p class="text-success ">公開</p>
                      <% else %>
                         <p class="text-secondary ">非公開</p>
                      <% end %>
                 </td>
             </tr>
-          </table>cipe
+          </table>
           <div class="d-flex justify-content-around">
             <p><%= link_to '編集する', edit_admin_recipe_path(@recipe.id), class: 'btn btn-success' %></p>
           </div>
