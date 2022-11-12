@@ -32,8 +32,7 @@
         <div class="row">
           <table class="table table-borderless mb-0" id="ingredient-table">
             <thead>
-              <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
-              <th class="pb-1"><h6 class="mb-0">分量</h6></th>
+              <th><h4 class="mx-auto mt-3">食材・調味料</h4></th>
             </thead>
             <tbody>
               <%= f.fields_for :ingredients do |ingredient| %>
@@ -47,9 +46,9 @@
             </tbody>
           </table>
 
-          <div class="links col-10 mx-auto mt-2">
-            <%= link_to_add_association "+フォームを追加", f, :ingredients,
-            class: "btn btn-secondary btn-block",
+          <div class="links col-md-2">
+            <%= link_to_add_association "+材料を追加", f, :ingredients,
+            class: "btn btn-primary btn-block",
             data: {
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'after'
@@ -60,26 +59,35 @@
 
       <!------------ 作成手順 -------------->
         <div class="row">
-          <h4 class="text-center mx-auto mb-0">作り方</h4>
+          <h4 class="col-2 mt-4">作り方</h4>
         </div>
 
         <div class="row">
-          <div class='offset-md-3'>
+          
           <table class="table table-borderless" id="procedure-table">
             <%= f.fields_for :procedures do |procedure| %>
             <tr>
-              <td><%= procedure.text_area :body, placeholder:"作り方を記入", class:"rounded", autofocus: true %></td>
-              <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+              <td><%= render partial: "admin/recipes/procedure_fields", locals: { f: procedure }%></td>
             </tr>
             <% end %>
+
+            <div id="detail-association-insertion-point"></div>
           </table>
+
+          <div class="links col-md-2">
+            <%= link_to_add_association "+作り方を追加", f, :procedures,
+            class: "btn btn-primary btn-block",
+            data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'
+            }%>
           </div>
+
         </div>
-        <input type="button" value="作り方を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-outline-warning">
 
         <div class="form-group row">
-          <%= f.label :コツ・ポイント, class:"col-md-2" %>
-          <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します" %>
+          <%= f.label :コツ・ポイント, class:"col-md-2 mt-5" %>
+          <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します", class:"mt-5" %>
         </div>
 
         <div class="actions">
