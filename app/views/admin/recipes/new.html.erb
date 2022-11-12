@@ -36,24 +36,33 @@
             </thead>
             <tbody>
               <%= f.fields_for :ingredients do |ingredient| %>
-                <tr>
-                  <td><%= render partial: "admin/recipes/ingredient_fields", locals: { f: ingredient }%></td>
-                </tr>
+                <%= render partial: "admin/recipes/ingredient_fields", locals: { f: ingredient }%>
               <% end %>
+              <tr id="detail-association-ingredient-insertion-point"><td></td></tr>
+              <tr>
+                <td class="links col-md-2">
+                  <%= link_to_add_association "+材料を追加", f, :ingredients,
+                    class: "btn btn-primary btn-block",
+                    data: {
+                      association_insertion_node: '#detail-association-ingredient-insertion-point',
+                      association_insertion_method: 'after'
 
-            <div id="detail-association-insertion-point"></div>
-
+                    }
+                  %>
+                </td>
+              </tr>
             </tbody>
           </table>
-
-          <div class="links col-md-2">
-            <%= link_to_add_association "+材料を追加", f, :ingredients,
+          <!--<div id="detail-association-insertion-point"></div>-->
+          <!--<div class="links col-md-2">-->
+            <%#= link_to_add_association "+材料を追加", f, :ingredients,
             class: "btn btn-primary btn-block",
             data: {
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'after'
             }%>
-          </div>
+          <!--</div>-->
+           <!--<div id="detail-association-insertion-point"></div>-->
 
         </div>
 
@@ -63,25 +72,32 @@
         </div>
 
         <div class="row">
-          
+
           <table class="table table-borderless" id="procedure-table">
             <%= f.fields_for :procedures do |procedure| %>
-            <tr>
-              <td><%= render partial: "admin/recipes/procedure_fields", locals: { f: procedure }%></td>
-            </tr>
+              <%= render partial: "admin/recipes/procedure_fields", locals: { f: procedure }%>
             <% end %>
-
-            <div id="detail-association-insertion-point"></div>
+            <tr id="detail-association-procedure-insertion-point"><td></td></tr>
+            <tr>
+              <td class="links col-md-2">
+                <%= link_to_add_association "+作り方を追加", f, :procedures,
+                  class: "btn btn-primary btn-block",
+                  data: {
+                  association_insertion_node: '#detail-association-procedure-insertion-point',
+                  association_insertion_method: 'after'
+                }%>
+              </td>
+            </tr>
           </table>
 
-          <div class="links col-md-2">
-            <%= link_to_add_association "+作り方を追加", f, :procedures,
+          <!--<div class="links col-md-2">-->
+            <%#= link_to_add_association "+作り方を追加", f, :procedures,
             class: "btn btn-primary btn-block",
             data: {
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'after'
             }%>
-          </div>
+          <!--</div>-->
 
         </div>
 
