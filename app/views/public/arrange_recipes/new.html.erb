@@ -3,11 +3,11 @@
     <h4 class="mb-5 text-color col-3 text-center">アレンジレシピ投稿</h4>
   </div>
 
-      <%= form_with model: @arrange_recipe, url: arrange_recipe_path, local: true do |f| %>
+      <%= form_with model: @arrange_recipe, local: true do |f| %>
 
         <div class="form-group row">
           <%= f.label "レシピのタイトル", class:"col-md-2" %>
-          <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐" %>
+          <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐", size: "45", class:'py-2 px-2' %>
 
         </div>
 
@@ -17,55 +17,71 @@
           <p>※料理以外の写真はご遠慮ください。</p>
         </div>
 
+      <!------------ 材料登録 -------------->
         <div class="form-group row">
-          <%= f.label :材料, class:"col-3" %>
+          <%= f.label :材料, class:"col-md-2" %>
           <%= f.text_field :serving, class:"rounded", autofocus: true, placeholder:"何人分" %>
         </div>
 
         <div class="row">
           <table class="table table-borderless mb-0" id="arrange_ingredient-table">
             <thead>
-              <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
-              <th class="pb-1"><h6 class="mb-0">分量</h6></th>
+              <th><h4 class="mx-auto mt-3">食材・調味料</h4></th>
             </thead>
             <tbody>
               <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
-                <tr>
-                  <td class="py-1"><%= arrange_ingredient.text_field :name, size:"14", placeholder: "牛肉" %></td>
-                  <td class="py-1"><%= arrange_ingredient.text_field :amount, size:"14", placeholder: "200g" %></td>
-                  <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
-                </tr>
+                <%= render partial: "arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
               <% end %>
+              <tr id="detail-association-arrange-ingredient-insertion-point"><td></td></tr>
+              <tr>
+                <td class="links col-md-2">
+                  <%= link_to_add_association "+材料を追加", f, :arrange_ingredients,
+                    class: "btn btn-primary btn-block",
+                    data: {
+                      association_insertion_node: '#detail-association-arrange-ingredient-insertion-point',
+                      association_insertion_method: 'after'
+
+                    }
+                  %>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <input type="button" value="材料を追加" onclick="addRow('arrange_ingredient-table')" class="btn btn-sm btn-color py-0 my-3 ml-2">
+        </div>
+
+      <!------------ 作成手順 -------------->
+        <div class="row">
+          <h4 class="col-2 mt-4">作り方</h4>
         </div>
 
         <div class="row">
-          <h4 class="text-center mx-auto mb-0">作り方</h4>
-        </div>
 
-        <div class="row">
-          <div class='offset-md-3'>
           <table class="table table-borderless" id="arrange_procedure-table">
             <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
-            <tr>
-              <td><%= arrange_procedure.text_area :body, placeholder:"作り方を記入" class:"rounded", autofocus: true %></td>
-              <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
-            </tr>
+              <%= render partial: "arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
             <% end %>
+            <tr id="detail-association-arrange-procedure-insertion-point"><td></td></tr>
+            <tr>
+              <td class="links col-md-2">
+                <%= link_to_add_association "+作り方を追加", f, :arrange_procedures,
+                  class: "btn btn-primary btn-block",
+                  data: {
+                  association_insertion_node: '#detail-association-arrange-procedure-insertion-point',
+                  association_insertion_method: 'after'
+                }%>
+              </td>
+            </tr>
           </table>
-          </div>
         </div>
-        <input type="button" value="作り方を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3 procedure-add-btn">
+
 
         <div class="form-group row">
-          <%= f.label :コメント, class:"col-3" %>
-          <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します" %>
+          <%= f.label :コツ・ポイント, class:"col-md-2 mt-5" %>
+          <%= f.text_area :comment, size: "50x5", placeholder:"ここに説明文を記述します", class:"mt-5" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "保存", class:"btn btn-success offset-3 mt-4" %>
+          <%= f.submit "保存", class:"btn btn-success btn-lg offset-5 mt-4" %>
         </div>
 
       <% end %>

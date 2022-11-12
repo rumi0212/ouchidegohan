@@ -1,9 +1,11 @@
 class Public::ArrangeRecipesController < ApplicationController
-  has_one_attached :image
+
   before_action :authenticate_public!,only: [:show]
   
   def new
     @arrange_recipe = ArrangeRecipe.new
+    @arrange_ingredients = @arrange_recipe.ingredients.build
+    @arrange_procedures = @arrange_recipe.procedures.build
   end
   
   def create
@@ -17,7 +19,7 @@ class Public::ArrangeRecipesController < ApplicationController
   private
 
   def arrange_recipe_params
-    params.require(:arrange_recipe).permit(:title, :image, :ingredient, :amount, :cooking_method, :comment, :status)
+    params.require(:arrange_recipe).permit(:title, :image, :comment, :status, :serving, arrange_procedures_attributes: [:body, :_destroy],arrange_ingredients_attributes: [:name, :amount, :_destroy])
   end
   
 end
