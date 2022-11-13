@@ -11,27 +11,31 @@
     </div>
   </div>
 
+  
   <div class="row">
+    <% @stores.each do |store| %>
     <div class ="col-lg-6 mx-auto">
-    <%= image_tag "izakaya.png", alt: "farmer", :size =>'400x350' %>
+    <%= link_to store_path(store.id) do %>
+      <p><%= image_tag "izakaya.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %></p>
+    <% end %>
     </div>
   </div>
 
   <div class="row">
     <div class ="col-lg-1 mx-auto m-5">
-    <%= image_tag "italian.png", alt: "farmer", :size =>'400x350' %>
+    <%= image_tag "italian.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
     </div>
   </div>
 
   <div class="row">
     <div class ="col-lg-6 mx-auto m-5">
-    <%= image_tag "washoku.png", alt: "farmer", :size =>'400x350' %>
+    <%= image_tag "washoku.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
     </div>
   </div>
 
   <div class="row">
     <div class ="col-lg-1 mx-auto m-5">
-    <%= image_tag "chuka.png", alt: "farmer", :size =>'400x350' %>
+    <%= image_tag "chuka.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
     </div>
   </div>
 
@@ -40,5 +44,6 @@
     <%= image_tag "cafe.png", alt: "farmer", :size =>'400x350' %>
     </div>
   </div>
+  <% end %>
 
 </div>

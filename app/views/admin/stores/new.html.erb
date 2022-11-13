@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8 px-sm-0 offset-sm-1">
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-8 px-sm-0 offset-sm-1 text-center">
       <h2>店舗新規登録</h2>
     </div>
   </div>
@@ -17,7 +17,7 @@
         <tr>
           <div class="form-group">
             <th><%= f.label :店名 %></th>
-            <td><%= f.text_field :store_name, placeholder:"店名" %></td>
+            <td><%= f.text_field :store_name, autofocus: true, class:"rounded", placeholder:"店名" %></td>
           </div>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
         <tr>
           <div class="form-group">
             <th><%= f.label :住所 %></th>
-            <td><%= f.text_field :address, autofocus: true, class: 'rounded col-6', placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+            <td><%= f.text_field :address, autofocus: true, class: 'rounded', size: "50", placeholder: "東京都渋谷区代々木神園町0-0" %></td>
           </div>
         </tr>
         <tr>
@@ -47,13 +47,13 @@
         <tr>
           <div class="form-group">
             <th><%= f.label :営業時間 %></th>
-            <td><%= f.text_field :opening_hour, placeholder:"00:00〜00:00" %></td>
+            <td><%= f.text_field :opening_hour, class:"rounded", placeholder:"00:00〜00:00" %></td>
           </div>
         </tr>
-        
+
         <tr>
           <div class="form-action">
-            <th><%= f.submit "新規登録", class:"btn btn-success" %></th>
+            <th><%= f.submit "新規登録", class:"btn btn-bloc btn-success mt-4" %></th>
           </div>
         </tr>
       <% end %>
