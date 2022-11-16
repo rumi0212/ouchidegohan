@@ -11,37 +11,73 @@
     </div>
   </div>
 
-  
+
   <div class="row">
-    
-    <div class ="col-lg-6 mx-auto">
-    <%= link_to image_tag "izakaya.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg", controller: "stores", action: "index", category_id: 1 %>
+
+    <div class ="col-lg-6 mb-5" style="text-align: right">
+      <%= link_to stores_path(category_id: 1) do %>
+        <%= image_tag "izakaya.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpg"  %>
+      <% end %>
+    </div>
+    <div class ="col-lg-6 mb-5 d-flex align-items-end">
+      <%= link_to stores_path(category_id: 1) do %>
+        <%= image_tag "storeindex1.png", alt: "farmer", :size =>'400x120', fallback: "no_image.jpg"  %>
+      <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class ="col-lg-1 mx-auto m-5">
-    <%= image_tag "italian.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
+
+    <div class ="col-lg-6 mb-5 d-flex align-items-end">
+      <%= link_to stores_path(category_id: 2) do %>
+        <%= image_tag "storeindex2.png", alt: "farmer", :size =>'400x120', fallback: "no_image.jpg"  %>
+      <% end %>
+    </div>
+    <div class ="col-lg-6 mb-5" style="text-align: left">
+      <%= link_to stores_path(category_id: 2) do %>
+        <%= image_tag "italian.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpg" %>
+      <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class ="col-lg-6 mx-auto m-5">
-    <%= image_tag "washoku.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
+    <div class ="col-lg-6 mb-5" style="text-align: right">
+      <%= link_to stores_path(category_id: 3) do %>
+        <%= image_tag "washoku.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpg"  %>
+      <% end %>
+    </div>
+    <div class ="col-lg-6 mb-5 d-flex align-items-end">
+      <%= link_to stores_path(category_id: 3) do %>
+        <%= image_tag "storeindex1.png", alt: "farmer", :size =>'400x120', fallback: "no_image.jpg"  %>
+      <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class ="col-lg-1 mx-auto m-5">
-    <%= image_tag "chuka.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpeg" %>
+    <div class ="col-lg-6 mb-5 d-flex align-items-end">
+      <%= link_to stores_path(category_id: 4) do %>
+        <%= image_tag "storeindex2.png", alt: "farmer", :size =>'400x120', fallback: "no_image.jpg"  %>
+      <% end %>
+    </div>
+    <div class ="col-lg-6 mb-5" style="text-align: left">
+      <%= link_to stores_path(category_id: 4) do %>
+        <%= image_tag "chuka.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpg" %>
+      <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class ="col-lg-6 mx-auto m-5">
-    <%= image_tag "cafe.png", alt: "farmer", :size =>'400x350' %>
+    <div class ="col-lg-6 mb-5" style="text-align: right">
+      <%= link_to stores_path(category_id: 5) do %>
+        <%= image_tag "cafe.png", alt: "farmer", :size =>'400x350', fallback: "no_image.jpg"  %>
+      <% end %>
+    </div>
+    <div class ="col-lg-6 mb-5 d-flex align-items-end">
+      <%= link_to stores_path(category_id: 5) do %>
+        <%= image_tag "storeindex1.png", alt: "farmer", :size =>'400x120', fallback: "no_image.jpg"  %>
+      <% end %>
     </div>
   </div>
-  
+
 
 </div>

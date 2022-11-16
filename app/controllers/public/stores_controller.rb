@@ -1,8 +1,9 @@
 class Public::StoresController < ApplicationController
-  
+
   def index
-    @stores = Store.where(id: params[:category_id]).order(created_at: :desc)
-    @categories = Category.all.page(params[:page]).per(4)
+    @category = Category.find(params[:category_id])
+    @stores = @category.stores.order(created_at: :desc).page(params[:page]).per(4)
+    @categories = Category.all
   end
 
   def show
@@ -10,7 +11,7 @@ class Public::StoresController < ApplicationController
   end
 
   private
-  
+
   def stores_params
     parmas.require(:store).permit(:store_name, :introduction, :address, :telephone_number, :opening_hour, :category_id)
   end

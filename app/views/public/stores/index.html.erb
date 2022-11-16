@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 px-sm-0">
-      <h2 class="mb-4 text-center text-color rounded-pill pb-2 pt-2"><%= @store.category.name %>の店舗一覧</h2>
+      <h2 class="mb-4 text-center text-color rounded-pill pb-2 pt-2"><%= @category.name %>の店舗一覧</h2>
     </div>
   </div>
   <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
@@ -9,11 +9,11 @@
       <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
        <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
         <%= link_to store_path(store.id) do %>
-          <p class="img-wrap"><%= image_tag store.image, format: 'jpeg', fallback: "no_image.jpeg", size: "180x130" %></p>
+          <p class="img-wrap"><%= image_tag store.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
         <% end %>
         <div class="card-body">
           <p class="item-details item-name card-text"><%= store.store_name %></p>
-          <p class="item-details item-name card-text"><%= store.ntroduction %></p>
+          <p class="item-details item-name card-text"><%= store.introduction %></p>
           <p class="item-details item-name card-text"><%= store.address %></p>
           <p class="item-details item-name card-text"><%= store.telephone_number %></p>
           <p class="item-details item-name card-text"><%= store.opening_hour %></p>
@@ -22,5 +22,5 @@
     </div>
       <% end %>
   </div>
-      <%= paginate(@items) %>
+      <%= paginate(@stores) %>
 </div>

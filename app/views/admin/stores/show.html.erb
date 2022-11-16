@@ -2,13 +2,13 @@
   <div class="mt-5">
     <h2 class="mb-4 text-center text-color rounded-pill pb-2 pt-2"><%= @store.store_name %>さんの店舗詳細</h2>
   </div>
-  
+
   <div class="row align-items-center m-5">
     <div class="col-lg text-center mb-5">
-      <%= image_tag @store.image, format: 'jpeg', fallback: "no_image.jpeg",size:"350x250" %>
+      <%= image_tag @store.image, format: 'jpg', fallback: "no_image.jpg",size:"350x250" %>
     </div>
   </div>
-  
+
   <div class="row m-5">
     <div class="col-10 offset-3">
       <table class="table table-bordered", style="width: 70%">
