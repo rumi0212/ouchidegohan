@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mt-5">
-    <h4 class="mb-5 text-color col-3 text-center">アレンジレシピ投稿</h4>
+    <h2 class="mx-auto mb-5 text-color col-3 text-center">アレンジレシピ投稿</h2>
   </div>
 
       <%= form_with model: @arrange_recipe, local: true do |f| %>
@@ -30,7 +30,7 @@
             </thead>
             <tbody>
               <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
-                <%= render partial: "arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
+                <%= render partial: "public/arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
               <% end %>
               <tr id="detail-association-arrange-ingredient-insertion-point"><td></td></tr>
               <tr>
@@ -58,7 +58,7 @@
 
           <table class="table table-borderless" id="arrange_procedure-table">
             <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
-              <%= render partial: "arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
+              <%= render partial: "public/arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
             <% end %>
             <tr id="detail-association-arrange-procedure-insertion-point"><td></td></tr>
             <tr>

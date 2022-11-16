@@ -1,8 +1,8 @@
 class Public::StoresController < ApplicationController
   
   def index
-    @total_stores = Store.all
-    @stores = Store.all.page(params[:page]).per(4)
+    @stores = Store.where(id: params[:category_id]).order(created_at: :desc)
+    @categories = Category.all.page(params[:page]).per(4)
   end
 
   def show

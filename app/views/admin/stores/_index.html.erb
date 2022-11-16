@@ -3,6 +3,7 @@
     <tr>
       <th>店舗ID</th>
       <th>店名</th>
+      <th>カテゴリ</th>
       <th>住所</th>
     </tr>
   </thead>
@@ -15,6 +16,9 @@
         </td>
         <td class="text-left">
           <%= link_to store.store_name,admin_store_path(store) %>
+        </td>
+        <td class="text-left">
+          <%= store.category.name %>
         </td>
         <td class="text-left">
           <%= store.address %>

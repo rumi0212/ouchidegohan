@@ -4,8 +4,8 @@ class Public::ArrangeRecipesController < ApplicationController
   
   def new
     @arrange_recipe = ArrangeRecipe.new
-    @arrange_ingredients = @arrange_recipe.ingredients.build
-    @arrange_procedures = @arrange_recipe.procedures.build
+    @arrange_ingredients = @arrange_recipe.arrange_ingredients.build
+    @arrange_procedures = @arrange_recipe.arrange_procedures.build
   end
   
   def create
