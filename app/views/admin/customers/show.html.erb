@@ -1,23 +1,23 @@
 <div class="container">
   <h2 class="mt-5 text-center"><%= @customer.name %>さんの会員詳細</h2>
     <div class="row m-5">
-      <div class="col-10 offset-1">
-          <table class="table">
+      <div class="col-8 offset-3">
+          <table class="table table-bordered", style="width: 70%">
             <tr>
-              <th class="text-center">会員ID</th>
+              <th class="bg-light">会員ID</th>
               <td><%= @customer.id%></td>
             </tr>
             <tr>
-              <th class="text-center">ニックネーム</th>
+              <th class="bg-light">ニックネーム</th>
               <td><%= @customer.name %></td>
             </tr>
             
             <tr>
-              <th class="text-center">メールアドレス</th>
+              <th class="bg-light">メールアドレス</th>
               <td><%= @customer.email%></td>
             </tr>
             <tr>
-              <th class="text-center">会員ステータス</th>
+              <th class="bg-light">会員ステータス</th>
               <% if @customer.is_deleted == true %>
                <td class="text-secondary">退会</td>
               <% else %>
@@ -25,7 +25,7 @@
               <% end %>
             </tr>
           </table>
-          <div class="d-flex justify-content-around">
+          <div class="d-flex mx-auto">
             <p><%= link_to "編集する",edit_admin_customer_path, class:"btn btn-success"%></p>
           </div>
    　　 </div>
