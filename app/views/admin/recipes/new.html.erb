@@ -3,7 +3,7 @@
     <h2 class="mx-auto mb-5 text-color col-3 text-center">レシピ投稿</h2>
   </div>
 
-      <%= form_with model: @recipe, local: true do |f| %>
+      <%= form_with model: @recipe, url: admin_store_recipes_path, local: true do |f| %>
 
         <div class="form-group row">
           <%= f.label "レシピのタイトル", class:"col-md-2" %>

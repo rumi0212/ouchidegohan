@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   
   has_one_attached :image
-  belongs_to :customer
+  belongs_to :category
   has_many :procedures, dependent: :destroy
   has_many :ingredients, dependent: :destroy
   has_many :post_comments, dependent: :destroy

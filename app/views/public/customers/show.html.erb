@@ -23,13 +23,27 @@
     </tbody>
   </table>
 
-  <div class="row mt-5">
-    <span class="fst-italic fs-5 col-2">配送先</span>
-    <%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-primary col-2" %>
-  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#tab1" class="nav-link active" data-toggle="tab">お気に入りレシピ</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab2" class="nav-link" data-toggle="tab">投稿したアレンジレシピ</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab3" class="nav-link" data-toggle="tab">下書き中のアレンジレシピ</a>
+    </li>
+  </ul>
 
-  <div class="row mt-3 mb-4">
-    <span class="fst-italic fs-5 col-2">注文履歴</span>
-    <%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary col-2" %>
+  <div class="tab-content">
+    <div id="tab1" class="tab-pane active">
+      タブ1のコンテンツが入ります
+    </div>
+    <div id="tab2" class="tab-pane">
+      タブ2のコンテンツが入ります
+    </div>
+    <div id="tab3" class="tab-pane">
+      タブ3のコンテンツが入ります
   </div>
+</div>
 </div>

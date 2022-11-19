@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :categories, only: [:index, :create, :edit, :update]
-    resources :recipes, except: [:destroy]
+    resources :recipes, only: [:index]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :stores, only: [:index, :show, :edit, :update]
-
+    resources :stores, only: [:index, :show, :edit, :update] do
+      resources :recipes, except: [:destroy]
+    end
   end
 
   # 顧客用
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
     resources :arrange_recipes, except: [:destroy]
     resources :stores,only: [:index,:show]
-    
+
     resource :customers,only: [:show] do
       collection do
     	get 'quit'

@@ -2,7 +2,7 @@
   <h2 class="mt-5 text-center">レシピ詳細</h2>
     <div class="row align-items-center m-5">
       <div class="col-lg text-center mb-5">
-        <%= image_tag @recipe.image, format: 'jpeg', fallback: "no_image.jpg",size:"350x250" %>
+        <%= image_tag @recipe.image, format: 'jpg', fallback: "no_image.jpg",size:"350x250" %>
       </div>
       <div class="col-lg">
           <table class="table">
@@ -16,11 +16,10 @@
             </tr>
             <tr>
               <th>
-                <h4>材料</h4>
-                <p>（<%= @recipe.serving %>人前）</p>
+                <h4>材料（<%= @recipe.serving %>）</h4>
               </th>
             </tr>
-            
+
             <tbody>
               <% @recipe.ingredients.each do |ingredient| %>
               <tr>
@@ -32,7 +31,7 @@
           </table>
       </div>
 
-        <div class="row mx-auto mt-5">
+        <div class="row mx-auto mt-2">
           <table style="width: 65%" class="table table-borderless mx-auto">
             <thead class="page-heading-pink">
               <th colspan="2" class="py-1">
@@ -48,13 +47,13 @@
               </tr>
               <% end %>
             </tbody>
-            
+
             <tr>
               <th>コツ・ポイント</th>
               <td><%= @recipe.comment %></td>
             </tr>
-            
-            
+
+
             <tr>
               <th>公開ステータス</th>
                 <td>
@@ -66,9 +65,10 @@
                 </td>
             </tr>
           </table>
-          <div class="d-flex justify-content-around">
-            <p><%= link_to '編集する', edit_admin_recipe_path(@recipe.id), class: 'btn btn-success' %></p>
-          </div>
+          
    　　 </div>
+   　　 <div class="d-flex justify-content-around">
+            <p><%= link_to '編集する', edit_admin_store_recipe_path(store_id: @store.id, id: @recipe.id), class: 'btn btn-success' %></p>
+          </div>
   　</div>
  </div>
