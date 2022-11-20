@@ -24,54 +24,40 @@
         </div>
 
         <div class="row">
-          <table class="table table-borderless mb-0" id="arrange_ingredient-table">
-            <thead>
-              <th><h4 class="mx-auto mt-3">食材・調味料</h4></th>
-            </thead>
-            <tbody>
-              <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
-                <%= render partial: "public/arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
-              <% end %>
-              <tr id="detail-association-arrange-ingredient-insertion-point"><td></td></tr>
-              <tr>
-                <td class="links col-md-2">
-                  <%= link_to_add_association "+材料を追加", f, :arrange_ingredients,
-                    class: "btn btn-primary btn-block",
-                    data: {
-                      association_insertion_node: '#detail-association-arrange-ingredient-insertion-point',
-                      association_insertion_method: 'after'
-
-                    }
-                  %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <h4 class="col-2 mt-4">食材・調味料</h4>
         </div>
+          <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
+            <%= render partial: "public/arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
+          <% end %>
+        <div id="detail-association-arrange-ingredient-insertion-point"></div>
+          <div class="links col-12 py-4">
+            <%= link_to_add_association "+材料を追加", f, :arrange_ingredients,
+                class: "btn btn-primary btn-block",
+                data: {
+                association_insertion_node: '#detail-association-arrange-ingredient-insertion-point',
+                association_insertion_method: 'after'
+                }
+            %>
+          </div>
+               
 
       <!------------ 作成手順 -------------->
         <div class="row">
           <h4 class="col-2 mt-4">作り方</h4>
         </div>
 
-        <div class="row">
-
-          <table class="table table-borderless" id="arrange_procedure-table">
-            <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
-              <%= render partial: "public/arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
-            <% end %>
-            <tr id="detail-association-arrange-procedure-insertion-point"><td></td></tr>
-            <tr>
-              <td class="links col-md-2">
-                <%= link_to_add_association "+作り方を追加", f, :arrange_procedures,
-                  class: "btn btn-primary btn-block",
-                  data: {
-                  association_insertion_node: '#detail-association-arrange-procedure-insertion-point',
-                  association_insertion_method: 'after'
-                }%>
-              </td>
-            </tr>
-          </table>
+        <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
+          <%= render partial: "public/arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
+        <% end %>
+        <div id="detail-association-arrange-procedure-insertion-point"></div>
+            
+        <div class="links col-12 py-4">
+          <%= link_to_add_association "+作り方を追加", f, :arrange_procedures,
+              class: "btn btn-primary btn-block",
+              data: {
+              association_insertion_node: '#detail-association-arrange-procedure-insertion-point',
+              association_insertion_method: 'after'
+              }%>
         </div>
 
 

@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
 
     resources :recipes do
-      resources :post_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy, :show]
       resources :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       collection do

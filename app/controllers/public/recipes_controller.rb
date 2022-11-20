@@ -9,13 +9,12 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @post_comment = PostComment.new
     # @store = Store.find(params[:store_id])
-    # 後で確認　@cart_item = CartItem.new
   end
 
   private
   
   def recipes_params
-    parmas.require(:recipe).permit(:store_id, :category_id, :title, :serving, :comment, :status)
+    parmas.require(:recipe).permit(:store_id, :category_id, :title, :serving, :comment, :status, :post_comment, procedures_attributes: [:id, :body, :_destroy],ingredients_attributes: [:id, :name, :amount, :_destroy])
   end
   
 end
