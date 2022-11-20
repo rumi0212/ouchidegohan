@@ -47,10 +47,10 @@
     　　<p><%= link_to "店舗情報を編集する", edit_admin_store_path, class: "btn btn-success" %></p>
   　　</div>
   　　<div class="row mt-1">
-    　　<p><%= link_to "レシピを投稿する", new_admin_store_recipe_path(store_id: @store.id), class: "btn btn-primary" %></p>
+    　　<p><%= link_to "レシピを投稿する", new_admin_store_recipe_path(@store), class: "btn btn-primary" %></p>
   　　</div>
   　　<div class="row mb-5">
-    　　<p><%= link_to "レシピ一覧を見る", admin_recipes_path, class: "btn btn-primary" %></p>
+    　　<p><%= link_to "レシピ一覧を見る", recipes_admin_store_path(@store), class: "btn btn-primary" %></p>
   　　</div>
     </div>
   </div>

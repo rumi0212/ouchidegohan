@@ -3,6 +3,7 @@ class Store < ApplicationRecord
   has_one_attached :image
 
   belongs_to :category
+  has_many :recipes, dependent: :destroy
 
   def self.category(category_id)
 　if search

@@ -8,6 +8,7 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @post_comment = PostComment.new
+    # @store = Store.find(params[:store_id])
     # 後で確認　@cart_item = CartItem.new
   end
 

@@ -26,6 +26,12 @@ class Admin::StoresController < ApplicationController
       render :new
     end
   end
+  
+  def recipes
+      @store = Store.find(params[:id])
+      @recipes = @store.recipes.page(params[:page]).per(10)
+    
+  end
 
   def update
     @store = Store.find(params[:id])

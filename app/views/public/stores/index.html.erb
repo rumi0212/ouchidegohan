@@ -14,9 +14,10 @@
               <p class="img-wrap"><%= image_tag store.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130", class: "mx-auto d-block" %></p>
             </div>
           </div>
-        <% end %>
+        
         <div class="card-body">
           <p class="item-details item-name card-text"><strong><%= store.store_name %></p></strong>
+        <% end %>
           <p class="item-details item-name card-text"><%= store.introduction %></p>
           <div class="input-group-prepend">
             <span><i class="fa-solid fa-house"></i></span>

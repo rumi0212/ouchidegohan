@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :categories, only: [:index, :create, :edit, :update]
-    resources :recipes, only: [:index]
+    resources :recipes, except: [:destroy, :new ,:create]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :stores, only: [:index, :show, :edit, :update] do
-      resources :recipes, except: [:destroy]
+      resources :recipes, only: [:new, :create]
+        member do 
+          get :recipes
+        end
+
     end
   end
 
