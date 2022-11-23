@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-    resources :arrange_recipes, except: [:destroy]
+    resources :arrange_recipes, except: [:destroy, :new ,:create]
     resources :stores,only: [:index,:show]
 
     resource :customers,only: [:show] do
@@ -47,6 +47,10 @@ Rails.application.routes.draw do
 
 
     resources :recipes do
+      resources :arrange_recipes, only: [:new, :create]
+      member do
+        get :arrange_recipes
+      end
       resources :post_comments, only: [:create, :destroy, :show]
       resources :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

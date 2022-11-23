@@ -10,7 +10,7 @@ class Admin::RecipesController < ApplicationController
   end
 
   def index
-      @recipes = Recipe.page(params[:page]).per(10)
+    @recipes = Recipe.page(params[:page]).per(10)
 
   end
 

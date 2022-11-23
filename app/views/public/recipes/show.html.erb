@@ -54,6 +54,13 @@
           <p class="text-wrap text-center px-3"><%= @recipe.comment %></p>
         </div>
 
+        <!--レシピを保存ボタン-->
+        <% if @recipe.bookmarked_by?(current_customer) %>
+        <% bookmark = current_customer.bookmarks.find_by(recipe_id: @recipe.id) %>
+          <%= link_to "お気に入りレシピを外す", recipe_bookmark_path(@recipe, bookmark), method: :delete, class: "btn btn-outline-danger" %>
+        <% else %>
+          <%= link_to "レシピを保存", recipe_bookmarks_path(@recipe), method: :recipe, class: "btn btn-outline-primary" %>
+        <% end %>
 
         <!--いいねボタン-->
         <div>
@@ -106,8 +113,12 @@
 
           </div>
 
+          <!--アレンジレシピ-->
           <div id="tab2" class="tab-pane mt-5">
-            <p>タブ2のコンテンツが入ります</p>
+            <p>ここにアレンジレシピ一覧</p>
+            
+            <%= link_to "アレンジレシピを投稿する", new_recipe_arrange_recipe_path(@recipe), class: "btn btn-sm btn-success col- mb-5" %>
+
           </div>
         </div>
 

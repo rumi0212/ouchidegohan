@@ -1,17 +1,18 @@
 class Public::BookmarksController < ApplicationController
-  
+  before_action :authenticate_customer!
+
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    # Recipeモデルからrecipe_idを探してくる
-    current_customer.bookmark(@recipe)
-    # ログイン中のユーザーと紐づけられたidを取ってくる。
+    recipe = Recipe.find(params[:recipe_id])
+    bookmark = recipe.bookmarks.new(customer_id: current_customer.id)
+    bookmark.save
+    redirect_to request.referer
   end
-  
+
   def destroy
-    @recipe = current_customer.bookmarks.find(params[:recipe_id]).recipe
-    current_customer.unbookmark(@recipe)
-    # redirect_backはユーザーが直前にリクエストを送ったページに戻す
-    # fallback_location: デフォルトの設定
+    recipe= Recipe.find(params[:recipe_id])
+    bookmark = recipe.bookmarks.find_by(customer_id: current_customer.id)
+    bookmark.destroy if bookmark
+    redirect_to request.referer
   end
-  
+
 end

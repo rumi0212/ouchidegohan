@@ -1,7 +1,7 @@
 class ArrangeRecipe < ApplicationRecord
   
   has_one_attached :image
-  
+  belongs_to :recipe
   has_many :arrange_procedures, dependent: :destroy
   has_many :arrange_ingredients, dependent: :destroy
   
