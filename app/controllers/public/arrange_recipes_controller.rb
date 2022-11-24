@@ -1,11 +1,20 @@
 class Public::ArrangeRecipesController < ApplicationController
 
-  before_action :authenticate_public!,only: [:show]
+  #before_action :authenticate_public!,only: [:show]
   
   def new
+    @recipe = Recipe.find(params[:recipe_id])
     @arrange_recipe = ArrangeRecipe.new
     @arrange_ingredients = @arrange_recipe.arrange_ingredients.build
     @arrange_procedures = @arrange_recipe.arrange_procedures.build
+  end
+  
+  def index
+    @arrange_recipes = ArrangeRecipe.page(params[:page]).per(10)
+  end
+  
+  def show
+    @arrange_recipe = ArrangeRecipe.find(params[:id])
   end
   
   def edit
