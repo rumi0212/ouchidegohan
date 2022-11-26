@@ -7,18 +7,17 @@
     <div class='col-md-11 offset-md-1'>
       <div class="recipe_new">
 
-        <div class="item_text">
+        <div class="item_text mb-3">
           <h2><%= @recipe.title %></h2>
         </div>
 
         <div class='row'>
-          <table class="table table-borderless mx-auto">
-            <thead class="border-bottom">
-              <th class="d-flex pb-0 mb-2">
+          <table class="table table-border mx-auto">
+              <th class="d-flex pb-0 mb-2 border-top-0">
                 <h5>材料</h5>
                 <p>（<%= @recipe.serving %>）</p>
               </th>
-            </thead>
+
             <tbody>
               <% @recipe.ingredients.each do |ingredient| %>
               <tr>
