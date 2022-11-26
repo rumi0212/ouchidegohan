@@ -46,7 +46,7 @@ class Public::ArrangeRecipesController < ApplicationController
   private
 
   def arrange_recipe_params
-    params.require(:arrange_recipe).permit(:title, :image, :comment, :status, :serving, :recipe_id, arrange_procedures_attributes: [:body, :_destroy],arrange_ingredients_attributes: [:name, :amount, :_destroy])
+    params.require(:arrange_recipe).permit(:title, :image, :comment, :status, :serving, :recipe_id, arrange_procedures_attributes: [:id, :body, :_destroy],arrange_ingredients_attributes: [:id, :name, :amount, :_destroy])
   end
   
 end

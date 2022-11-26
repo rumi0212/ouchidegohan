@@ -4,68 +4,64 @@
       <div class="col-lg text-center mb-5">
         <%= image_tag @arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg",size:"350x250" %>
       </div>
-      <div class="col-lg">
-          <table class="table">
-            <tr>
-              <th>レシピ名</th>
-              <td><%= @arrange_recipe.title %></td>
-            </tr>
-            
-            <tr>
-              <th>
-                <h4>材料</h4>
-                <p>（<%= @arrange_recipe.serving %>人前）</p>
-              </th>
-            </tr>
-            
-            <tbody>
-              <% @arrange_recipe.ingredients.each do |arrange_ingredient| %>
-              <tr>
-                <td style="width: 45%" class='pt-4 pl-4'><%= arrange_ingredient.name %></td>
-                <td style="width: 10%" class='pt-4'><%= arrange_ingredient.amount %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-      </div>
-
-        <div class="row mx-auto mt-5">
-          <table style="width: 65%" class="table table-borderless mx-auto">
-            <thead class="page-heading-pink">
-              <th colspan="2" class="py-1">
-                <h5 class="jp-font-classic text-white text-center mb-0">作り方</h5>
-              </th>
-            </thead>
-            <tbody>
-              <% step_num = 0 %>
-              <% @arrange_recipe.procedures.each do |arrange_procedure| %>
-              <tr class="ml-2">
-                <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
-                <td style='width: 50%' class="text-wrap pt-3"><%= arrange_procedure.body %></td>
-              </tr>
-              <% end %>
-            </tbody>
-            
-            <tr>
-              <th>コツ・ポイント</th>
-              <td><%= @arrange_recipe.comment %></td>
-            </tr>
-            
-            
-            <tr>
-              <th>公開ステータス</th>
-                <td>
-                     <% if @arrange_recipe.status == true %>
-                        <p class="text-success ">公開</p>
-                     <% else %>
-                        <p class="text-secondary ">非公開</p>
-                     <% end %>
-                </td>
-            </tr>
-          </table>
-          <div class="d-flex justify-content-around">
-            <p><%= link_to '編集する', edit_arrange_recipe_path(@arrange_recipe.id), class: 'btn btn-success' %></p>
+      <div class='col-md-11 offset-md-1'>
+        <div class="recipe_new">
+          
+          <div class="item_text">
+            <h2><%= @arrange_recipe.title %></h2>
           </div>
-   　　 </div>
+          
+          <div class='row'>
+            <table class="table table-borderless mx-auto">
+              <thead class="border-bottom">
+                <th class="d-flex pb-0 mb-2">
+                  <h5>材料</h5>
+                    <p>（<%= @arrange_recipe.serving %>）</p>
+                </th>
+              </thead>
+
+              <tbody>
+                <% @arrange_recipe.arrange_ingredients.each do |arrange_ingredient| %>
+                <tr>
+                  <td style="width: 45%" class='pt-4 pl-4'><%= arrange_ingredient.name %></td>
+                  <td style="width: 10%" class='pt-4'><%= arrange_ingredient.amount %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mx-auto mt-5">
+            <table class="table table-borderless mx-auto">
+              <thead class="page-heading-pink">
+                <th colspan="2" class="py-1">
+                  <h5>作り方</h5>
+                </th>
+              </thead>
+              <tbody>
+                <% step_num = 0 %>
+                <% @arrange_recipe.arrange_procedures.each do |arrange_procedure| %>
+                <tr class="ml-2">
+                  <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
+                  <td style='width: 50%' class="text-wrap pt-3"><%= arrange_procedure.body %></td>
+                </tr>
+                 <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-4 mb-3">
+            <h4>コツ・ポイント</h4>
+            <p class="text-wrap text-center px-3"><%= @arrange_recipe.comment %></p>
+          </div>
+
+        <div class="d-flex justify-content-around">
+          <% if @arrange_recipe.customer_id == current_customer.id %>
+          <p><%= link_to '編集する', edit_arrange_recipe_path(@arrange_recipe.id), class: 'btn btn-success' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   　</div>
  </div>
