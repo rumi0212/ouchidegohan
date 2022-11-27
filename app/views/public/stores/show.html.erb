@@ -43,13 +43,13 @@
           </tr>
         </tbody>
       </table>
-      
+
       <div class="row mt-4">
     　　<p><%= link_to "このお店のレシピを見る", recipes_path, class: "btn btn-outline-warning" %></p>
   　　</div>
-      
+
       <div class="row mb-5">
-    　　<p><%= link_to "店舗一覧へ戻る", stores_path, class: "btn btn-success" %></p>
+    　　<p><%= link_to "店舗一覧へ戻る", stores_path(@category), class: "btn btn-success" %></p>
   　　</div>
     </div>
   </div>
