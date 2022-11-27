@@ -1,7 +1,8 @@
 <div class="container">
   <h2 class="mt-5 text-center">マイページ</h2>
-  <%#= image_tag @customer.image, format: 'jpg', fallback: "no_image.jpg",size:"100x100" %>
-  <%#= image_tag @custmer.image(100,100), class:"rounded-circle";  %>
+  <div class="col-lg text-center mb-5">
+    <%= image_tag @customer.get_image(100,100) %>
+  </div>
   <div class="row mt-5">
     <span class="offset-md-4 col-md-2">登録情報</span>
     <% if @customer.id == current_customer.id %>
@@ -36,7 +37,7 @@
     <li class="nav-item">
       <a href="#tab2" class="nav-link" data-toggle="tab">投稿したアレンジレシピ</a>
     </li>
-    
+
   </ul>
 
 
@@ -76,14 +77,14 @@
             <h4>(全<%= @arrange_recipes.count %>件)</h4>
           </div>
         </div>
-              
+
         <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
           <% @arrange_recipes.each do |arrange_recipe| %>
           <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
           <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
             <%= link_to arrange_recipe_path(arrange_recipe.id) do %>
             <p class="img-wrap"><%= image_tag arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
-        
+
           <div class="card-body">
             <p class="recipe-details recipe-name card-text"><%= arrange_recipe.title %></p>
           </div>
