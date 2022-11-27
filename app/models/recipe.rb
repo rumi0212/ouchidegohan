@@ -21,6 +21,7 @@ class Recipe < ApplicationRecord
     validates :ingredients
     validates :procedures
   end
+  
 
 
   def post_commented_by?(customer)

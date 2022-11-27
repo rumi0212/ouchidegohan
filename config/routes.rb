@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :stores, only: [:index, :show, :edit, :update] do
       resources :recipes, only: [:new, :create]
-        member do 
+        member do
           get :recipes
         end
 
@@ -22,10 +22,6 @@ Rails.application.routes.draw do
   end
 
   # 顧客用
-
-  scope module: :public do
-    resource :customers,only: [:edit,:update]
-  end
 
   devise_for :customers,skip: [:passwords],controllers: {
     registrations: "public/registrations",
@@ -36,9 +32,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
     resources :arrange_recipes, except: [:destroy, :new ,:create]
-    resources :stores,only: [:index,:show]
+    resources :stores, only: [:index,:show]
 
-    resource :customers,only: [:show] do
+    resources :customers, only: [:show,:edit,:update] do
       collection do
     	get 'quit'
     	patch 'out'
