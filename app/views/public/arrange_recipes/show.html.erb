@@ -6,11 +6,11 @@
       </div>
       <div class='col-md-11 offset-md-1'>
         <div class="recipe_new">
-          
+
           <div class="item_text mb-3">
             <h2><%= @arrange_recipe.title %></h2>
           </div>
-          
+
           <div class='row'>
             <table class="table table-border mx-auto">
                 <th class="d-flex pb-0 mb-2 border-top-0">
@@ -53,11 +53,13 @@
             <p class="text-wrap text-center px-3"><%= @arrange_recipe.comment %></p>
           </div>
 
-        <div class="d-flex justify-content-around">
-          <% if @arrange_recipe.customer_id == current_customer.id %>
-          <p><%= link_to '編集する', edit_arrange_recipe_path(@arrange_recipe.id), class: 'btn btn-success' %></p>
-          <% end %>
-        </div>
+        <% if current_customer.present? %>
+          <div class="d-flex justify-content-around">
+            <% if @arrange_recipe.customer_id == current_customer.id %>
+            <p><%= link_to '編集する', edit_arrange_recipe_path(@arrange_recipe.id), class: 'btn btn-success' %></p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
 

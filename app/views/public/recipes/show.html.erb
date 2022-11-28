@@ -54,15 +54,18 @@
         </div>
 
         <!--レシピを保存ボタン-->
-        <% if @recipe.bookmarked_by?(current_customer) %>
-        <% bookmark = current_customer.bookmarks.find_by(recipe_id: @recipe.id) %>
-          <%= link_to "お気に入りレシピを外す", recipe_bookmark_path(@recipe, bookmark), method: :delete, class: "btn btn-outline-danger" %>
-        <% else %>
-          <%= link_to "レシピを保存", recipe_bookmarks_path(@recipe), method: :recipe, class: "btn btn-outline-primary" %>
+        <% if current_customer.present? %>
+          <% if @recipe.bookmarked_by?(current_customer) %>
+          <% bookmark = current_customer.bookmarks.find_by(recipe_id: @recipe.id) %>
+            <%= link_to "お気に入りレシピを外す", recipe_bookmark_path(@recipe, bookmark), method: :delete, class: "btn btn-outline-danger" %>
+          <% else %>
+            <%= link_to "レシピを保存", recipe_bookmarks_path(@recipe), method: :recipe, class: "btn btn-outline-primary" %>
+          <% end %>
         <% end %>
-
         <!--いいねボタン-->
+        <% if current_customer.present? %>
         <div>
+          <!--レシピを保存ボタン-->
           <% if @recipe.favorited_by?(current_customer) %>
             <p>
               <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
@@ -77,7 +80,7 @@
             </p>
           <% end %>
         </div>
-
+        <% end %>
 
         <!--レビュー-->
 
