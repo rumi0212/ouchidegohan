@@ -4,69 +4,73 @@
       <div class="col-lg text-center mb-5">
         <%= image_tag @recipe.image, format: 'jpg', fallback: "no_image.jpg",size:"350x250" %>
       </div>
-      <div class="col-lg">
-        <table class="table">
-          <tr>
-            <th>レシピ名</th>
-            <td><%= @recipe.title %></td>
-          </tr>
-          <tr>
-            <th>カテゴリ</th>
-            <td><%= @recipe.category.name %></td>
-          </tr>
-          <tr>
-            <th>
-              <h4>材料（<%= @recipe.serving %>）</h4>
+      <div class='col-md-11 offset-md-1'>
+          
+        <div class="item_text mb-5">
+          <h2><%= @recipe.title %></h2>
+        </div>
+        
+        <div class="row mb-3">
+          <h4>カテゴリ</h4>
+          <p class="px-5"><%= @recipe.category.name %></p>
+        </div>
+
+        <div class='row'>
+          <table class="table table-border mx-auto">
+            <th class="d-flex pb-0 mb-2 border-top-0">
+              <h5>材料</h5>
+              <p>（<%= @recipe.serving %>）</p>
             </th>
-          </tr>
 
           <tbody>
             <% @recipe.ingredients.each do |ingredient| %>
             <tr>
-              <td style="width: 45%" class='pt-4 pl-4'><%= ingredient.name %></td>
-              <td style="width: 10%" class='pt-4'><%= ingredient.amount %></td>
+              <td><%= ingredient.name %></td>
+              <td><%= ingredient.amount %></td>
             </tr>
             <% end %>
           </tbody>
         </table>
       </div>
 
-      <div class="row mx-auto mt-2">
-        <table style="width: 65%" class="table table-borderless mx-auto">
+      <div class="row mx-auto mt-5">
+        <table class="table table-borderless mx-auto">
           <thead class="page-heading-pink">
             <th colspan="2" class="py-1">
-              <h4 class="text-black text-center mb-0">作り方</h4>
+              <h5>作り方</h5>
             </th>
           </thead>
           <tbody>
             <% step_num = 0 %>
             <% @recipe.procedures.each do |procedure| %>
             <tr class="ml-2">
-              <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
-              <td style='width: 50%' class="text-wrap pt-3"><%= procedure.body %></td>
+              <td><%= step_num += 1 %>)</td>
+              <td><%= procedure.body %></td>
             </tr>
             <% end %>
           </tbody>
-
-          <tr>
-            <th>コツ・ポイント</th>
-            <td><%= @recipe.comment %></td>
-          </tr>
-
-          <tr>
-            <th>公開ステータス</th>
-              <td>
-                <% if @recipe.status == true %>
-                  <p class="text-success ">公開</p>
-                <% else %>
-                  <p class="text-secondary ">非公開</p>
-                <% end %>
-              </td>
-          </tr>
         </table>
       </div>
+
+      <div class="row mt-4 mb-4">
+        <h4>コツ・ポイント</h4>
+        <p class="text-wrap text-center px-3"><%= @recipe.comment %></p>
+      </div>
+
+      <div class="row mt-4 mb-4">
+        <h4>公開ステータス</h4>
+          <% if @recipe.status == true %>
+            <p class="text-success px-5">公開</p>
+          <% else %>
+            <p class="text-secondary px-5">非公開</p>
+          <% end %>
+      </div>
+          
+      
       <div class="d-flex justify-content-around">
         <p><%= link_to '編集する', edit_admin_recipe_path( @recipe.id), class: 'btn btn-success' %></p>
       </div>
-  　</div>
+      
+    </div>
+   </div>
  </div>

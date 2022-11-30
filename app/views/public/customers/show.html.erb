@@ -81,14 +81,14 @@
         <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
           <% @arrange_recipes.each do |arrange_recipe| %>
           <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-          <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-            <%= link_to arrange_recipe_path(arrange_recipe.id) do %>
-            <p class="img-wrap"><%= image_tag arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
-
-          <div class="card-body">
-            <p class="recipe-details recipe-name card-text"><%= arrange_recipe.title %></p>
-          </div>
-          <% end %>
+            <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+              <%= link_to arrange_recipe_path(arrange_recipe.id) do %>
+              <p class="img-wrap"><%= image_tag arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
+  
+            <div class="card-body">
+              <p class="recipe-details recipe-name card-text"><%= arrange_recipe.title %></p>
+            </div>
+            <% end %>
           </div>
         </div>
           <% end %>
@@ -96,9 +96,6 @@
 
 
     </div>
-
-    <!--下書き中のアレンジレシピ一覧-->
-
 
   </div>
 </div>
