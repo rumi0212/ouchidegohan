@@ -1,0 +1,6 @@
+ja:
+  enums:
+    arrange_recipe:
+      status:
+        open: "公開"
+        closed: "非公開"

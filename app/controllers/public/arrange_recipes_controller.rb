@@ -10,7 +10,8 @@ class Public::ArrangeRecipesController < ApplicationController
   end
 
   def index
-    @arrange_recipes = ArrangeRecipe.page(params[:page]).per(10)
+    #@arrange_recipes = ArrangeRecipe.page(params[:page]).per(5)
+    @arrange_recipes = ArrangeRecipe.open.order('created_at DESC')
   end
 
   def show

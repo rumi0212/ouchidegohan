@@ -2,7 +2,7 @@
   <h2 class="mt-5 text-center">レシピ詳細</h2>
   <div class="row align-items-center m-5">
     <div class="col-lg text-center mb-5">
-      <%= image_tag @recipe.image, format: 'jpg', fallback: "no_image.jpg",size:"300x200" %>
+      <%= image_tag @recipe.get_image(300,200) %>
     </div>
     <div class='col-md-11 offset-md-1'>
 
@@ -61,7 +61,7 @@
             <%= link_to "レシピを保存", recipe_bookmarks_path(@recipe), method: :recipe, class: "btn btn-outline-primary" %>
           <% end %>
         <% end %>
-        
+
         <!--いいねボタン-->
         <% if current_customer.present? %>
         <div>
@@ -93,6 +93,7 @@
         </ul>
 
         <div class="tab-content">
+          
           <div id="tab1" class="tab-pane active mt-3">
             <h5>レビュー件数：<%= @recipe.post_comments.count %></h5>
 
@@ -116,7 +117,11 @@
             <div>
               <%= form_with model: [@recipe, @post_comment] do |f| %>
                 <%= f.text_area :comment, class:"form-control", rows:"3", placeholder: "コメントをここに" %>
+                <% if customer_signed_in? %>
                 <%= f.submit "送信する", class:"btn btn-block btn-info mt-4" %>
+                <% else %>
+                <%= link_to "アカウント新規登録して投稿する", new_customer_registration_path,class: "btn btn-outline-secondary mt-4" %>
+                <% end %>
               <% end %>
             </div>
 
@@ -137,13 +142,13 @@
                 <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
                   <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
                     <%= link_to arrange_recipe_path(arrange_recipe.id) do %>
-                    <p class="img-wrap"><%= image_tag arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
+                    <p class="img-wrap"><%= image_tag arrange_recipe.get_image(180,130) %></p>
                     <p class="recipe-details recipe-name card-text"><%= arrange_recipe.title %></p>
                   <div class="card-body">
                     <p>
                       <div class="row" style="display: flex; align-items: center;">
                         <div class="col-3">
-                          <%= image_tag arrange_recipe.customer.get_image(50,50), class:"mt-3 rounded-circle"; %>
+                          <%= image_tag arrange_recipe.customer.get_image(50,50), class:"rounded-circle"; %>
                         </div>
                         <div class="col-7">
                           <%= arrange_recipe.customer.name %>
@@ -157,13 +162,11 @@
                 <% end %>
               </div>
 
-          <%# if customer_signed_in? %>
-            <%# if @arrange_recipe.customer_id == current_customer.id %>
+          <% if customer_signed_in? %>
             <%= link_to "アレンジレシピを投稿する", new_recipe_arrange_recipe_path(@recipe), class: "btn btn-sm btn-success col-mb-5" %>
-            <%# else %>
-            <%#= link_to "アカウント新規登録", new_customer_registration_path,class: "btn btn-outline-secondary mx-3 my-1" %>
-            <%# end %>
-          <%# end %>
+            <% else %>
+            <%= link_to "アカウント新規登録して投稿する", new_customer_registration_path,class: "btn btn-outline-secondary mx-3 my-1" %>
+          <% end %>
 
           </div>
         </div>

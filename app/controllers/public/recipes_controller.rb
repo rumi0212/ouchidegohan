@@ -1,8 +1,8 @@
 class Public::RecipesController < ApplicationController
 
   def index
-    @total_recipes = Recipe.all
-    @recipes = Recipe.all.page(params[:page]).per(4)
+    #@total_recipes = Recipe.all
+    @recipes = Recipe.where(status: true).page(params[:page]).per(4)
     #@arrange_recipes = AraangeRecipe.all.page(params[:page]).per(4)
   end
 
@@ -10,14 +10,9 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @post_comment = PostComment.new
     # @arrange_recipes = ArrangeRecipe.where(recipe_id: params[:id])
-    @arrange_recipes = @recipe.arrange_recipes
+    @arrange_recipes = @recipe.arrange_recipes.where(status: true)
 
     # @store = Store.find(params[:store_id])
-  end
-
-  def arrange_recipes
-      @arrange_recipe = ArrangeRecipe.find(params[:id])
-      #@recipes = @recipe.recipes.page(params[:page]).per(10)
   end
 
   private

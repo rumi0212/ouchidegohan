@@ -17,6 +17,7 @@ class ArrangeRecipe < ApplicationRecord
     validates :arrange_procedures
   end
 
+  #enum status: { open: 0, closed: 1 }
 
   def get_image(width, height)
     unless image.attached?
