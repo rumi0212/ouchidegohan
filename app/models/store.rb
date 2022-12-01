@@ -4,12 +4,20 @@ class Store < ApplicationRecord
 
   belongs_to :category
   has_many :recipes, dependent: :destroy
+  
+  with_options presence: true do
+    validates :store_name
+    validates :introduction
+    validates :address
+    validates :telephone_number
+    validates :opening_hour
+  end
 
   def self.category(category_id)
-　if search
-　　Store.where(category_id: category_id)
-　else
-　　Store.all
-　end
+  　if search
+  　　Store.where(category_id: category_id)
+  　else
+  　　Store.all
+  　end
   end
 end
