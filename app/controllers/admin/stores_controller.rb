@@ -8,6 +8,7 @@ class Admin::StoresController < ApplicationController
 
   def new
     @store = Store.new
+    
   end
 
   def show

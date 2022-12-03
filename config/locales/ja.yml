@@ -4,3 +4,36 @@ ja:
       status:
         open: "公開"
         closed: "非公開"
+  activerecord:
+    attributes:
+      recipe:
+        title: "レシピ名"
+        category_id: "カテゴリ"
+        serving: "何人分のレシピか"
+        ingredients: "材料"
+        procedures: "作り方"
+        comment: "コツ・ポイント"
+      ingredients:
+        name: "材料名"
+        amount: "分量"
+      arrange_recipe:
+        title: "レシピ名"
+        serving: "何人分のレシピか"
+        arrange_ingredients: "材料"
+        arrange_procedures: "作り方"
+        comment: "コツ・ポイント"
+      arrange_ingredients:
+        name: "材料名"
+        amount: "分量"
+      customer:
+        name: "ニックネーム"
+        email: "メールアドレス"
+      post_comment:
+        comment: "レビュー"
+      store:
+        store_name: "店名"
+        introduction: "お店の説明"
+        address: "住所"
+        telephone_number: "電話番号"
+        opening_hour: "営業時間"
+        category_id: "カテゴリ"

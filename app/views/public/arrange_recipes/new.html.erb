@@ -4,6 +4,7 @@
   </div>
 
       <%= form_with model: [@recipe, @arrange_recipe], local: true do |f| %>
+        <%= render 'public/shared/error_messages', object: f.object %>
 
         <div class="form-group row">
           <%= f.label "レシピのタイトル", class:"col-md-2" %>

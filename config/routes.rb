@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :recipes, except: [:destroy, :new ,:create]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :stores, only: [:index, :show, :edit, :update] do
+    resources :stores, only: [:new, :index, :show, :edit, :update] do
       resources :recipes, only: [:new, :create]
         member do
           get :recipes

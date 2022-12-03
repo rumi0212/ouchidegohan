@@ -4,7 +4,8 @@
   </div>
 
       <%= form_with model: @recipe, url:admin_store_recipes_path(@store), local: true do |f| %>
-
+        <%= render 'admin/shared/error_messages', object: f.object %>
+        
         <div class="form-group row">
           <%= f.label "レシピのタイトル", class:"col-md-2" %>
           <%= f.text_field :title, class:"rounded", autofocus: true, placeholder:"ゴロゴロひき肉の麻婆豆腐", size: "45", class:'py-2 px-2' %>

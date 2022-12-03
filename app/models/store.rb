@@ -12,6 +12,8 @@ class Store < ApplicationRecord
     validates :telephone_number
     validates :opening_hour
   end
+  
+  validates :introduction, length: { maximum: 80 }
 
   def self.category(category_id)
   　if search

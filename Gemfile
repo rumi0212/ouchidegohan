@@ -65,4 +65,4 @@ gem 'cocoon'
 
 gem "enum_help"
 
-
+gem 'rails-i18n'

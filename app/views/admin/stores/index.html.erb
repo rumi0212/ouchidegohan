@@ -5,7 +5,12 @@
   </div>
   
   <div class="row d-flex justify-content-center">
-  <%= render 'index', stores: @stores%>
- </div>
+    <%= render 'index', stores: @stores%>
+  </div>
+ 
+  <div class="row d-flex justify-content-center">
+    <p><%= link_to "店舗を新規登録", new_admin_store_path, class: "btn btn-success mb-5" %></p>
+  </div>
+  
  <div class="d-flex justify-content-center"><%= paginate(@stores)%></div>
 </div>
