@@ -45,7 +45,7 @@
       </table>
 
       <div class="row mt-4">
-    　　<p><%= link_to "このお店のレシピを見る", recipes_path, class: "btn btn-outline-warning" %></p>
+    　　<p><%= link_to "このお店のレシピを見る", recipes_path(store_id: @store.id), class: "btn btn-outline-warning" %></p>
   　　</div>
 
       <div class="row mb-5">

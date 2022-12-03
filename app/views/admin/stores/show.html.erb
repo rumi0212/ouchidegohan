@@ -4,8 +4,8 @@
   </div>
 
   <div class="row align-items-center m-5">
-    <div class="col-lg text-center mb-5">
-      <%= image_tag @store.image, format: 'jpg', fallback: "no_image.jpg",size:"350x250" %>
+    <div class="col-lg text-center mb-3">
+      <%= image_tag @store.get_image(350,250) %>
     </div>
   </div>
 
@@ -47,10 +47,10 @@
     　　<p><%= link_to "店舗情報を編集する", edit_admin_store_path, class: "btn btn-success" %></p>
   　　</div>
   　　<div class="row mt-1">
-    　　<p><%= link_to "レシピを投稿する", new_admin_store_recipe_path(@store), class: "btn btn-primary" %></p>
+    　　<p>  <%= link_to "店舗のレシピ一覧を見る", recipes_admin_store_path(@store), class: "btn btn-warning" %></p>
   　　</div>
-  　　<div class="row mb-5">
-    　　<p><%= link_to "レシピ一覧を見る", recipes_admin_store_path(@store), class: "btn btn-primary" %></p>
+  　　<div class="row mb-1">
+    　　<p><%= link_to "レシピを投稿する", new_admin_store_recipe_path(@store), class: "btn btn-primary" %></p>
   　　</div>
     </div>
   </div>

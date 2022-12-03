@@ -1,8 +1,12 @@
 class Public::RecipesController < ApplicationController
 
   def index
-    #@total_recipes = Recipe.all
-    @recipes = Recipe.where(status: true).page(params[:page]).per(4)
+    recipes = if params[:store_id].present?
+                Recipe.where(status: true, store_id: params[:store_id])
+              else
+                Recipe.where(status: true)
+              end
+    @recipes = recipes.page(params[:page]).per(4)
     #@arrange_recipes = AraangeRecipe.all.page(params[:page]).per(4)
   end
 

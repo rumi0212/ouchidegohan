@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :recipes, except: [:destroy, :new ,:create]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :stores, only: [:new, :index, :show, :edit, :update] do
+    resources :stores, except: [:destroy] do
       resources :recipes, only: [:new, :create]
         member do
           get :recipes
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     end
 
 
-    resources :recipes do
+    resources :recipes, only: [:index, :show] do
       resources :arrange_recipes, only: [:new, :create]
       member do
         get :arrange_recipes
