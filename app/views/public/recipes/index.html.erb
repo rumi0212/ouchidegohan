@@ -10,10 +10,7 @@
        <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
         <%= link_to recipe_path(recipe.id) do %>
           <p class="img-wrap"><%= image_tag recipe.get_image(180,130) %></p>
-        
-        <div class="card-body">
-          <p class="recipe-details recipe-name card-text"><%= recipe.title %></p>
-        </div>
+          <p class="recipe-details recipe-name card-text"><%= recipe.title.truncate(12) %></p>
         <% end %>
       </div>
     </div>

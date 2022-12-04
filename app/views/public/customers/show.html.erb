@@ -57,10 +57,7 @@
             <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
               <%= link_to recipe_path(bookmark.recipe) do %>
               <p class="img-wrap"><%= image_tag bookmark.recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
-  
-            <div class="card-body">
-              <p class="recipe-details recipe-name card-text"><%= bookmark.recipe.title %></p>
-            </div>
+              <p class="recipe-details recipe-name card-text"><%= bookmark.recipe.title.truncate(12) %></p>
             <% end %>
             </div>
           </div>
@@ -84,10 +81,7 @@
             <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
               <%= link_to arrange_recipe_path(arrange_recipe.id) do %>
               <p class="img-wrap"><%= image_tag arrange_recipe.image, format: 'jpg', fallback: "no_image.jpg", size: "180x130" %></p>
-  
-            <div class="card-body">
               <p class="recipe-details recipe-name card-text"><%= arrange_recipe.title.truncate(12) %></p>
-            </div>
             <% end %>
           </div>
         </div>
