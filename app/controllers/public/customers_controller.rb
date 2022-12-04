@@ -1,12 +1,9 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    #@customer = Customer.find(params[:id])
     @customer = current_customer
     @bookmarks = Bookmark.where(customer_id: current_customer.id)
-    #@arrange_recipe = Recipe.find(params[:id])
     @arrange_recipes = ArrangeRecipe.where(customer_id: params[:id])
-    #@arrange_recipes = @recipe.arrange_recipes
   end
 
   def edit

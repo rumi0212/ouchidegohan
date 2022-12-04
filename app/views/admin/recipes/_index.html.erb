@@ -22,13 +22,13 @@
           <%= recipe.title %>
         </td>
         <td class="text-left">
-          <%= recipe.category.name %>
+          <%= recipe.store.category.name %>
         </td>
         <td class="col-xs-2">
           <% if recipe.status == true %>
-          <p class="text-secondary">公開</p>
+          <p class="text-success">公開</p>
           <% else %>
-          <p class="text-success">非公開</p>
+          <p class="text-secondary">非公開</p>
           <% end %>
         </td>
       </tr>
