@@ -1,7 +1,5 @@
 class Public::ArrangeRecipesController < ApplicationController
 
-  #before_action :authenticate_public!,only: [:show]
-
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @arrange_recipe = ArrangeRecipe.new
@@ -10,7 +8,6 @@ class Public::ArrangeRecipesController < ApplicationController
   end
 
   def index
-    #@arrange_recipes = ArrangeRecipe.page(params[:page]).per(5)
     @arrange_recipes = ArrangeRecipe.open.order('created_at DESC')
   end
 
@@ -47,7 +44,7 @@ class Public::ArrangeRecipesController < ApplicationController
   private
 
   def arrange_recipe_params
-    params.require(:arrange_recipe).permit(:title, :image, :comment, :status, :serving, :recipe_id, arrange_procedures_attributes: [:id, :body, :_destroy],arrange_ingredients_attributes: [:id, :name, :amount, :_destroy])
+    params.require(:arrange_recipe).permit(:title, :image, :comment, :status, :serving, :recipe_id, :store_id, arrange_procedures_attributes: [:id, :body, :_destroy],arrange_ingredients_attributes: [:id, :name, :amount, :_destroy])
   end
 
 end

@@ -1,11 +1,14 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <%# if customer_signed_in? %>
-      <%= link_to "おうちdeお店", root_path, class:"header-title navbar-brand btn btn-outline-secondary btn-lg mx-3 my-1" %>
-      <%# elsif admin_signed_in? %>
-      <%#= link_to "おうちdeお店", admin_root_path, class:"header-title navbar-brand btn btn-outline-secondary btn-lg mx-3 my-1" %>
-      <%# end %>
+      <% if admin_signed_in?  %>
+        <%= link_to "おうちdeお店", admin_root_path, class:"header-title navbar-brand btn btn-outline-secondary btn-lg mx-3 my-1" %>
+      <% else %>
+        <%= link_to "おうちdeお店", root_path, class:"header-title navbar-brand btn btn-outline-secondary btn-lg mx-3 my-1" %>
+      <% end %>
+       
+      
+     
         <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
           <% if customer_signed_in? %>
             <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn btn-outline-secondary mx-3 my-1" %>
