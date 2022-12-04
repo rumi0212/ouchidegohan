@@ -95,7 +95,7 @@
         </ul>
 
         <div class="tab-content">
-          
+
           <div id="tab1" class="tab-pane active mt-3">
             <h5>レビュー件数：<%= @recipe.post_comments.count %></h5>
 
@@ -110,7 +110,7 @@
                       <% if post_comment.customer == current_customer %>
                       <%= link_to "削除", recipe_post_comment_path(post_comment.recipe, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
                       <% end %>
-              
+
                     </div>
                   </div>
                 </div>
@@ -123,7 +123,7 @@
                 <% if customer_signed_in? %>
                 <%= f.submit "送信する", class:"btn btn-block btn-info mt-4" %>
                 <% else %>
-                <%= link_to "アカウント新規登録して投稿する", new_customer_registration_path,class: "btn btn-outline-secondary mt-4" %>
+                <%= link_to "アカウント新規登録してレビューを投稿する", new_customer_registration_path,class: "btn btn-outline-secondary mt-4" %>
                 <% end %>
               <% end %>
             </div>
