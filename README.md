@@ -39,13 +39,13 @@
 
 - 管理者側
 
-【会員ユーザーアカウント】
-   メールアドレス： ouchi_cook@test.com
-   パスワード： ouchitest
+【会員ユーザーアカウント】<br />
+   メールアドレス： ouchi_cook@test.com<br />
+   パスワード： ouchitest<br />
 
-【管理者アカウント】
-   メールアドレス： test@test.com
-   パスワード： admintest
+【管理者アカウント】<br />
+   メールアドレス： test@test.com<br />
+   パスワード： admintest<br />
 
 ## 実装機能リスト
 ### 顧客側
