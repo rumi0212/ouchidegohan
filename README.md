@@ -80,7 +80,7 @@
 
 ## 設計書
 ### ER図
-<img src="https://user-images.githubusercontent.com/106750897/206901593-f92905c0-2506-4fda-a94d-e2a19e715fa9.png" width="800">
+<img src="https://user-images.githubusercontent.com/106750897/206901824-a7aae0e6-d628-4e1a-8871-ed100136957e.png" width="800">
 
 
 ## 開発環境
