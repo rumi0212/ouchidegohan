@@ -31,9 +31,6 @@
 レシピ公開するのでお客さんのレビューと評価でお店の知名度も上げたい。
 お客さんが投稿してくれたアレンジレシピも今後の参考にできる。
 
-## 設計書
-### ER図
-<img src="https://drive.google.com/file/d/1lsAlmobf35FCe_NcHKpNQ46KvwyfxWx6/view?usp=sharing" width="800">
 
 【会員ユーザーアカウント】<br />
    メールアドレス： ouchi_cook@test.com<br />
@@ -79,6 +76,10 @@
 | 会員退会 | × |
 
 ## 設計書
+### ER図
+<img src="https://drive.google.com/file/d/1lsAlmobf35FCe_NcHKpNQ46KvwyfxWx6/view?usp=sharing" width="800">
+
+### テーブル提議書
 https://docs.google.com/spreadsheets/d/1Wz_nGtSaJyqLhIjRGKNQY2_vaX6dOqBOGU51tAsZiBU/edit?usp=sharing
 
 ## 開発環境
