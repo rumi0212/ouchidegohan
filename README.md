@@ -33,11 +33,7 @@
 
 ## 設計書
 ### ER図
-
-### UI Flow
-- 顧客側
-
-- 管理者側
+<img src="https://drive.google.com/file/d/1lsAlmobf35FCe_NcHKpNQ46KvwyfxWx6/view?usp=sharing" width="800">
 
 【会員ユーザーアカウント】<br />
    メールアドレス： ouchi_cook@test.com<br />
