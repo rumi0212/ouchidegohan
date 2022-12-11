@@ -10,19 +10,19 @@ ja:
         title: "レシピ名"
         category_id: "カテゴリ"
         serving: "何人分のレシピか"
-        ingredients: "材料"
-        procedures: "作り方"
+        ingredient: "材料"
+        procedure: "作り方"
         comment: "コツ・ポイント"
-      ingredients:
+      ingredient:
         name: "材料名"
         amount: "分量"
       arrange_recipe:
         title: "レシピ名"
         serving: "何人分のレシピか"
-        arrange_ingredients: "材料"
-        arrange_procedures: "作り方"
+        arrange_ingredient: "材料"
+        arrange_procedure: "作り方"
         comment: "コツ・ポイント"
-      arrange_ingredients:
+      arrange_ingredient:
         name: "材料名"
         amount: "分量"
       customer:

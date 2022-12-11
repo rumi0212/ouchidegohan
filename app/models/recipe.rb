@@ -17,13 +17,13 @@ class Recipe < ApplicationRecord
   with_options presence: true do
     validates :serving
     validates :title
-    validates :comment
+    #validates :comment
     validates :ingredients
     validates :procedures
   end
-  
+
   validates :comment, length: { maximum: 80 }
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -31,7 +31,7 @@ class Recipe < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def get_profile_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')
