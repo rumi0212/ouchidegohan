@@ -3,78 +3,80 @@
     <h2 class="mx-auto mb-5 text-color col-4 text-center">アレンジレシピ編集</h2>
   </div>
 
-    <%= form_with model: @arrange_recipe, url: arrange_recipe_path, local: true do |f| %>
+  <%= form_with model: @arrange_recipe, url: arrange_recipe_path, local: true do |f| %>
 
-      <div class="form-group row">
-        <%= f.label :料理写真, class:"col-md-2" %>
-        <%= f.file_field :image, accept: "image/*" %>
-        <p>※料理以外の写真はご遠慮ください。</p>
-      </div>
+    <div class="form-group row">
+      <%= f.label :料理写真, class:"col-md-2" %>
+      <%= f.file_field :image, accept: "image/*" %>
+      <p>※料理以外の写真はご遠慮ください。</p>
+    </div>
 
-      <div class="form-group row">
-        <%= f.label :レシピのタイトル, class:"col-md-2" %>
-        <%= f.text_field :title, autofocus: true, size: "45", class:'py-2 px-2' %>
-      </div>
+    <div class="form-group row">
+      <%= f.label :レシピのタイトル, class:"col-md-2" %>
+      <%= f.text_field :title, autofocus: true, size: "45", class:'py-2 px-2' %>
+    </div>
 
-      <!------------ 材料登録 -------------->
-      <div class="form-group row">
-        <%= f.label :材料,class:"col-md-2" %>
-        <%= f.text_field :serving, class:"rounded", autofocus: true %>
-      </div>
+    <!------------ 材料登録 -------------->
+    <div class="form-group row">
+      <%= f.label :材料,class:"col-md-2" %>
+      <%= f.text_field :serving, class:"rounded", autofocus: true %>
+    </div>
 
-      <div class="row">
-        <h4 class="col-2 mt-4">食材・調味料</h4>
-      </div>
-        <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
-          <%= render partial: "public/arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
-        <% end %>
-        <div id="detail-association-arrange-ingredient-insertion-point"></div>
-        <div class="links col-12 py-4">
-          <%= link_to_add_association "+材料を追加", f, :arrange_ingredients,
-              class: "btn btn-primary btn-block",
-              data: {
-              association_insertion_node: '#detail-association-arrange-ingredient-insertion-point',
-              association_insertion_method: 'after'
-              }
-          %>
-        </div>
+    <div class="row">
+      <h4 class="col-2 mt-4">食材・調味料</h4>
+    </div>
+      <%= f.fields_for :arrange_ingredients do |arrange_ingredient| %>
+        <%= render partial: "public/arrange_recipes/arrange_ingredient_fields", locals: { f: arrange_ingredient }%>
+      <% end %>
 
-        <!------------ 作成手順 -------------->
-        <div class="row">
-          <h4 class="col-2 mt-4">作り方</h4>
-        </div>
+    <div id="detail-association-arrange-ingredient-insertion-point"></div>
 
-        <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
-          <%= render partial: "public/arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
-        <% end %>
-        <div id="detail-association-arrange-procedure-insertion-point"></div>
+    <div class="links col-12 py-4">
+      <%= link_to_add_association "+材料を追加", f, :arrange_ingredients,
+          class: "btn btn-primary btn-block",
+          data: {
+          association_insertion_node: '#detail-association-arrange-ingredient-insertion-point',
+          association_insertion_method: 'before'
+          }
+      %>
+    </div>
 
-        <div class="links col-12 py-4">
-          <%= link_to_add_association "+作り方を追加", f, :arrange_procedures,
-              class: "btn btn-primary btn-block",
-              data: {
-              association_insertion_node: '#detail-association-arrange-procedure-insertion-point',
-              association_insertion_method: 'after'
-              }%>
-        </div>
+    <!------------ 作成手順 -------------->
+    <div class="row">
+      <h4 class="col-2 mt-4">作り方</h4>
+    </div>
 
-
-        <div class="form-group row">
-          <%= f.label :コツ・ポイント, class:"col-md-2 mt-5" %>
-          <%= f.text_area :comment, size: "50x5", class:"mt-5" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :公開ステータス,class:"form_label my-3" %>
-          <%= f.radio_button :status, true, checked: true %>
-          <%= f.label :status, "公開中",class:"form_label" %>
-          <%= f.radio_button :status, false %>
-          <%= f.label :status, "非公開",class:"form_label" %>
-        </div>
-
-        <div class="form-action d-flex justify-content-around">
-          <%= f.submit "変更を保存", class:"btn btn-success mb-5" %>
-        </div>
-
+    <%= f.fields_for :arrange_procedures do |arrange_procedure| %>
+      <%= render partial: "public/arrange_recipes/arrange_procedure_fields", locals: { f: arrange_procedure }%>
     <% end %>
+
+    <div id="detail-association-arrange-procedure-insertion-point"></div>
+
+    <div class="links col-12 py-4">
+      <%= link_to_add_association "+作り方を追加", f, :arrange_procedures,
+          class: "btn btn-primary btn-block",
+          data: {
+          association_insertion_node: '#detail-association-arrange-procedure-insertion-point',
+          association_insertion_method: 'before'
+          }%>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :コツ・ポイント, class:"col-md-2 mt-5" %>
+      <%= f.text_area :comment, size: "50x5", class:"mt-5" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :公開ステータス,class:"form_label my-3" %>
+      <%= f.radio_button :status, true, checked: true %>
+      <%= f.label :status, "公開中",class:"form_label" %>
+      <%= f.radio_button :status, false %>
+      <%= f.label :status, "非公開",class:"form_label" %>
+    </div>
+
+    <div class="form-action d-flex justify-content-around">
+      <%= f.submit "変更を保存", class:"btn btn-success mb-5" %>
+    </div>
+
+  <% end %>
 </div>
