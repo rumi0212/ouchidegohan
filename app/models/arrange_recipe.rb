@@ -12,7 +12,7 @@ class ArrangeRecipe < ApplicationRecord
   with_options presence: true do
     validates :serving
     validates :title
-    validates :comment
+    #validates :comment
     validates :arrange_ingredients
     validates :arrange_procedures
   end
