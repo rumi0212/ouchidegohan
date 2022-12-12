@@ -40,6 +40,7 @@ class Admin::RecipesController < ApplicationController
     @recipe.assign_attributes(recipe_params)
     
     if @recipe.valid?
+      @recipe.reload
       @recipe.update(recipe_params)
       redirect_to admin_recipe_path(@recipe)
     else
