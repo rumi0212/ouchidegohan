@@ -16,6 +16,8 @@ ja:
       ingredients:
         name: "材料名"
         amount: "分量"
+      procedures:
+        body: "作り方"
       arrange_recipe:
         title: "レシピ名"
         serving: "何人分のレシピか"
@@ -25,6 +27,8 @@ ja:
       arrange_ingredients:
         name: "材料名"
         amount: "分量"
+      arrange_procedures:
+        body: "作り方"
       customer:
         name: "ニックネーム"
         email: "メールアドレス"
