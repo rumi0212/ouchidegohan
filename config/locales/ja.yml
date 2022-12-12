@@ -22,7 +22,7 @@ ja:
         arrange_ingredient: "材料"
         arrange_procedure: "作り方"
         comment: "コツ・ポイント"
-      arrange_ingredient:
+      arrange_ingredients:
         name: "材料名"
         amount: "分量"
       customer:
