@@ -8,12 +8,12 @@ ja:
     attributes:
       recipe:
         title: "レシピ名"
-        category_id: "カテゴリ"
+        category: "カテゴリ"
         serving: "何人分のレシピか"
         ingredient: "材料"
         procedure: "作り方"
         comment: "コツ・ポイント"
-      ingredient:
+      ingredients:
         name: "材料名"
         amount: "分量"
       arrange_recipe:

@@ -25,8 +25,8 @@ class Admin::RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.store_id = params[:store_id]
+    @store = Store.find(params[:store_id])
+    @recipe = @store.recipes.build(recipe_params)
 
     if @recipe.save
       redirect_to  admin_recipe_path(@recipe.id)
@@ -37,10 +37,15 @@ class Admin::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-    redirect_to admin_recipe_path(@recipe)
+    @recipe.assign_attributes(recipe_params)
+    
+    if @recipe.valid?
+      @recipe.update(recipe_params)
+      redirect_to admin_recipe_path(@recipe)
     else
-    render:edit
+      @recipe.reload
+      @recipe.update(recipe_parent_params)
+      render:edit
     end
   end
 
@@ -48,6 +53,10 @@ class Admin::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:image, :title, :serving, :store_id, :comment,:status, :category_id, procedures_attributes: [:id, :body, :_destroy],ingredients_attributes: [:id, :name, :amount, :_destroy])
+  end
+  
+  def recipe_parent_params
+    params.require(:recipe).permit(:image, :title, :serving, :store_id, :comment,:status, :category_id)
   end
 
 end
