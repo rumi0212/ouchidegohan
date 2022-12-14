@@ -32,7 +32,7 @@
 お客さんが投稿してくれたアレンジレシピも今後の参考にできる。
 
 
-おうちdeお店ごはんURL
+### おうちdeお店ごはんURL
 http://ouchi-de-omisegohan.com/
 
 ```
