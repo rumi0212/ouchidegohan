@@ -32,10 +32,10 @@
 お客さんが投稿してくれたアレンジレシピも今後の参考にできる。
 
 
-```
-**おうちdeお店ごはん**
+おうちdeお店ごはんURL
 http://ouchi-de-omisegohan.com/
 
+```
 【会員ユーザーアカウント】
    メールアドレス： ouchi_cook@test.com
    パスワード： ouchitest
