@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update,:destroy]
     resources :recipes, except: [:destroy, :new ,:create]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :stores, except: [:destroy] do
