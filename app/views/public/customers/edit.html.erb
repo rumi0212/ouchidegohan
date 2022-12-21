@@ -3,37 +3,35 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
       <h2 class="text-dark bg-light py-4 mb-0">会員情報編集</h2>
     
-  
-  <div class="form-body p-4">
-  <%= form_with model: @customer, url:customer_path, local: true do |f| %>
-
-    <%#= attachment_image_tag @customer, :image, :fill, 60, 60, fallback: "no_image.jpg", class:"mb-3" %>
-    <div class="input-group mb-3">
-      <label>
-      <%= f.file_field :image, accept: "image/*", placeholder: "プロフィール画像", class: "w-100" %>
-      </label>
-    </div>
-    
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+        <div class="form-body p-4">
+        <%= form_with model: @customer, url:customer_path, local: true do |f| %>
+        
+          <%#= attachment_image_tag @customer, :image, :fill, 60, 60, fallback: "no_image.jpg", class:"mb-3" %>
+          <div class="input-group mb-3">
+            <label>
+            <%= f.file_field :image, accept: "image/*", placeholder: "プロフィール画像", class: "w-100" %>
+            </label>
+          </div>
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"ニックネーム" %>
+          </div>
+        
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+            </div>
+              <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス" %>
+          </div>
+        
+        <%= f.submit "編集内容を保存", class: "btn btn-success offset-0 col-5 mt-3" %>
+        <% end %>
+        
+        <%= link_to "退会する", quit_customers_path, class: "btn btn-danger offset-0 col-5 mt-3" %>
       </div>
-      <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"ニックネーム" %>
     </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>
-      </div>
-        <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス" %>
-    </div>
-
-
-    <%= f.submit "編集内容を保存", class: "btn btn-success offset-0 col-5 mt-3" %>
-  <% end %>
-  
-  <%= link_to "退会する", quit_customers_path, class: "btn btn-danger offset-0 col-5 mt-3" %>
-  </div>
-  </div>
   </div>
 </div>
