@@ -100,8 +100,11 @@ http://ouchi-de-omisegohan.com/
 - enum_help
 
 ## 使用素材
+**【画像素材】**　<br />
 - O-DAN(<https://o-dan.net/ja/>)
 - photAC(<https://www.photo-ac.com/>)
 - pixabay(<https://pixabay.com/ja/>)
 - Canva(<https://www.canva.com/ja_jp/>)
+
+**【アイコン・ロゴ】** <br />
 - Font Awesoe(<https://fontawesome.com/>)
