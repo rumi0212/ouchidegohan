@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
   with_options presence: true do
     validates :serving
     validates :title
-    #validates :comment
+   #validates :comment
     validates :ingredients
     validates :procedures
   end
