@@ -17,6 +17,7 @@ class Public::ArrangeRecipesController < ApplicationController
 
   def edit
     @arrange_recipe = ArrangeRecipe.find(params[:id])
+    @arrange_recipe.customer_id = current_customer.id
   end
 
   def create
