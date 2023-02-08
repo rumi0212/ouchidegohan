@@ -1,5 +1,5 @@
 class Public::PostCommentsController < ApplicationController
-  
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @comment = current_customer.post_comments.new(post_comment_params)
@@ -7,10 +7,11 @@ class Public::PostCommentsController < ApplicationController
     @comment.save
     redirect_to recipe_path(@recipe)
   end
-  
+
   def destroy
     PostComment.find(params[:id]).destroy
     redirect_to recipe_path(params[:recipe_id])
+    @comment = current_customer.post_comments
   end
 
   private
@@ -18,5 +19,5 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
 end
